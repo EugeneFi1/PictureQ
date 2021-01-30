@@ -1,2 +1,18 @@
-<button type="button" class="btn btn-outline-primary" routerLink="insert-picture">Insert Picture</button>
 <router-outlet></router-outlet>
+<div *ngIf="quest">
+  <div> Name:
+    {{quest.name}}
+  </div>
+  <div> Description:
+    {{quest.description}}
+  </div>
+  <div> Explanation:
+    {{quest.explanation}}
+  </div>
+  <div> Reply Strategy:
+    {{quest.replyStrategy}}
+  </div>
+  <div> Show Strategy:
+    {{quest.showStrategy}}
+  </div>
+</div>

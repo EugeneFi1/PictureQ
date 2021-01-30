@@ -1,0 +1,70 @@
+<div class="m-3">
+
+  <span>Create quest</span>
+
+  <form [formGroup]="createQuest" class="example-form" (ngSubmit)="saveQuest(createQuest.value)">
+    <mat-grid-list cols="2" rowHeight="20em">
+
+      <mat-grid-tile style="width: 200px">
+        <div>
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput placeholder="ex. name" formControlName="name">
+          </mat-form-field>
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput placeholder="ex. description" formControlName="description"></textarea>
+          </mat-form-field>
+
+          <div class="mt-3">
+            <mat-checkbox class="example-margin" formControlName="explanation">Give questions explanation</mat-checkbox>
+          </div>
+        </div>
+      </mat-grid-tile>
+
+      <mat-grid-tile style="width: 200px">
+        <div>
+          <input type="file" formControlName="picture">
+        </div>
+
+      </mat-grid-tile>
+
+      <mat-grid-tile style="width: 200px">
+        <div>
+          <span>How to display answers?</span>
+          <mat-radio-group aria-label="Select an option" formControlName="replyStrategy">
+            <mat-radio-button value="1">don`t show</mat-radio-button>
+            <mat-radio-button value="2">show answer at the end</mat-radio-button>
+            <mat-radio-button value="3">show answer after user response</mat-radio-button>
+            <mat-radio-button value="4">show answer immediately</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-grid-tile>
+      <mat-grid-tile style="width: 200px">
+        <div>
+          <span>In what order to display pages?</span>
+          <mat-radio-group aria-label="Select an option" formControlName="showStrategy">
+            <mat-radio-button value="1">show sequentially</mat-radio-button>
+            <mat-radio-button [value]="'2,' + amount.value">show randomly
+              <mat-form-field class="show-strategy">
+                <mat-label>amount</mat-label>
+                <input matInput placeholder="amount" #amount>
+              </mat-form-field>
+              pages
+            </mat-radio-button>
+            <mat-radio-button value="3">show everything in random order</mat-radio-button>
+          </mat-radio-group>
+        </div>
+      </mat-grid-tile>
+
+    </mat-grid-list>
+    <button mat-raised-button color="primary" type="submit" class="next-button">Next</button>
+
+  </form>
+
+  <button mat-raised-button color="primary" class="back-button" (click)="back()">Back</button>
+
+</div>
+
+
+<!--<app-edit-modules></app-edit-modules>-->
