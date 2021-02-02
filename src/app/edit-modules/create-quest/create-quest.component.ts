@@ -14,6 +14,8 @@ import {Location} from '@angular/common';
   styleUrls: ['./create-quest.component.css']
 })
 export class CreateQuestComponent implements OnInit {
+  pictureUrl: string | undefined;
+  choosePicture: string | undefined;
   // @ts-ignore
   quest: Quest;
   quest$: Observable<Quest>;
@@ -23,7 +25,8 @@ export class CreateQuestComponent implements OnInit {
     explanation: new FormControl(false),
     replyStrategy: new FormControl(),
     showStrategy: new FormControl(),
-    picture: new FormControl()
+    picture: new FormControl(),
+    pageAmount: new FormControl()
   });
 
   constructor(private store: Store<CreateQuestState>, private location: Location) {
@@ -46,6 +49,8 @@ export class CreateQuestComponent implements OnInit {
     quest.explanation = customerData.explanation;
     quest.replyStrategy = customerData.replyStrategy;
     quest.showStrategy = customerData.showStrategy;
+    quest.picture = customerData.picture;
+    quest.pageAmount = customerData.pageAmount;
     this.store.dispatch(addQuest(quest));
   }
 }

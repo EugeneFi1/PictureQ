@@ -3,7 +3,10 @@
 /*  max-width: 300px;*/
 /*  width: 100%;*/
 /*}*/
-
+img{
+  max-height: 200px;
+  max-width: 200px;
+}
 .example-full-width {
   width: 100%;
   min-width: 50px;
@@ -14,9 +17,9 @@ mat-radio-button {
   display: block;
 }
 
-/*.show-strategy {*/
-/*  width: 20%;*/
-/*}*/
+.show-strategy {
+  width: 20%;
+}
 
 .next-button {
   right: 30px;
@@ -28,4 +31,7 @@ mat-radio-button {
   left: 30px;
   bottom: 30px;
   position: absolute;
+}
+mat-grid-tile{
+  width: 200px;
 }

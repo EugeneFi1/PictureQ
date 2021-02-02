@@ -7,4 +7,5 @@ export class Quest {
   replyStrategy: string | undefined;
   userName: string |undefined;
   showStrategy: string | undefined;
+  pageAmount: number | undefined;
 }

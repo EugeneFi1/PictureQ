@@ -5,7 +5,7 @@
   <form [formGroup]="createQuest" class="example-form" (ngSubmit)="saveQuest(createQuest.value)">
     <mat-grid-list cols="2" rowHeight="20em">
 
-      <mat-grid-tile style="width: 200px">
+      <mat-grid-tile>
         <div>
           <mat-form-field class="example-full-width">
             <mat-label>Name</mat-label>
@@ -22,14 +22,36 @@
         </div>
       </mat-grid-tile>
 
-      <mat-grid-tile style="width: 200px">
+      <mat-grid-tile>
         <div>
-          <input type="file" formControlName="picture">
+          <div class="picture-url">
+            <div>
+              <img [src]="pictureUrl">
+            </div>
+            <mat-form-field appearance="fill">
+              <mat-label>import picture</mat-label>
+              <mat-select [(value)]="choosePicture">
+                <mat-option value="1">choose file</mat-option>
+                <mat-option value="2">url</mat-option>
+              </mat-select>
+            </mat-form-field>
+            <div style="width: 50px">
+              <div *ngIf="choosePicture == 1">
+                <input type="file" formControlName="picture">
+              </div>
+              <div *ngIf="choosePicture == 2">
+                <mat-form-field>
+                  <mat-label>url</mat-label>
+                  <input matInput type="text" formControlName="picture" [(ngModel)]="pictureUrl">
+                </mat-form-field>
+              </div>
+            </div>
+          </div>
         </div>
 
       </mat-grid-tile>
 
-      <mat-grid-tile style="width: 200px">
+      <mat-grid-tile>
         <div>
           <span>How to display answers?</span>
           <mat-radio-group aria-label="Select an option" formControlName="replyStrategy">
@@ -40,15 +62,15 @@
           </mat-radio-group>
         </div>
       </mat-grid-tile>
-      <mat-grid-tile style="width: 200px">
+      <mat-grid-tile>
         <div>
           <span>In what order to display pages?</span>
           <mat-radio-group aria-label="Select an option" formControlName="showStrategy">
             <mat-radio-button value="1">show sequentially</mat-radio-button>
-            <mat-radio-button [value]="'2,' + amount.value">show randomly
+            <mat-radio-button value="2">show randomly
               <mat-form-field class="show-strategy">
                 <mat-label>amount</mat-label>
-                <input matInput placeholder="amount" #amount>
+                <input matInput placeholder="amount" formControlName="pageAmount">
               </mat-form-field>
               pages
             </mat-radio-button>
