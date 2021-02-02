@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {FormControl, FormGroup} from '@angular/forms';
+import {FormControl, FormGroup, Validators} from '@angular/forms';
 import {Quest} from '../../models/quest';
 import {select, Store} from '@ngrx/store';
 import {CreateQuestState} from '../../store/reducer/create-quest.reducer';
@@ -14,23 +14,26 @@ import {Location} from '@angular/common';
   styleUrls: ['./create-quest.component.css']
 })
 export class CreateQuestComponent implements OnInit {
-  pictureUrl: string | undefined;
+  pictureUrl: string;
   choosePicture: string | undefined;
+  amountPage: string;
   // @ts-ignore
   quest: Quest;
   quest$: Observable<Quest>;
   createQuest = new FormGroup({
-    name: new FormControl(''),
-    description: new FormControl(''),
+    name: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
     explanation: new FormControl(false),
-    replyStrategy: new FormControl(),
-    showStrategy: new FormControl(),
-    picture: new FormControl(),
-    pageAmount: new FormControl()
+    replyStrategy: new FormControl('', [Validators.required]),
+    showStrategy: new FormControl('', [Validators.required]),
+    picture: new FormControl(''),
+    pageAmount: new FormControl('', [Validators.required])
   });
 
   constructor(private store: Store<CreateQuestState>, private location: Location) {
     this.quest$ = this.store.pipe(select(selectQuest));
+    this.pictureUrl = 'ex. url';
+    this.amountPage = '';
   }
 
   ngOnInit(): void {

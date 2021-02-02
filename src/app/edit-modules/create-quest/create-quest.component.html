@@ -1,8 +1,10 @@
 <div class="m-3">
 
   <span>Create quest</span>
-
-  <form [formGroup]="createQuest" class="example-form" (ngSubmit)="saveQuest(createQuest.value)">
+  <div class="alert alert-danger example-full-width m-2" role="alert" *ngIf="createQuest.invalid && f.submitted">
+    Please fill in required fields!
+  </div>
+  <form [formGroup]="createQuest" class="example-form" (ngSubmit)="saveQuest(createQuest.value)" #f="ngForm">
     <mat-grid-list cols="2" rowHeight="20em">
 
       <mat-grid-tile>
@@ -11,6 +13,7 @@
             <mat-label>Name</mat-label>
             <input matInput placeholder="ex. name" formControlName="name">
           </mat-form-field>
+
           <mat-form-field class="example-full-width">
             <mat-label>Description</mat-label>
             <textarea matInput placeholder="ex. description" formControlName="description"></textarea>
@@ -25,8 +28,8 @@
       <mat-grid-tile>
         <div>
           <div class="picture-url">
-            <div>
-              <img [src]="pictureUrl">
+            <div *ngIf="pictureUrl != 'ex. url'">
+              <img [src]="pictureUrl" alt="picture">
             </div>
             <mat-form-field appearance="fill">
               <mat-label>import picture</mat-label>
@@ -36,10 +39,10 @@
               </mat-select>
             </mat-form-field>
             <div style="width: 50px">
-              <div *ngIf="choosePicture == 1">
+              <div *ngIf="choosePicture == '1'">
                 <input type="file" formControlName="picture">
               </div>
-              <div *ngIf="choosePicture == 2">
+              <div *ngIf="choosePicture == '2'">
                 <mat-form-field>
                   <mat-label>url</mat-label>
                   <input matInput type="text" formControlName="picture" [(ngModel)]="pictureUrl">
@@ -65,12 +68,12 @@
       <mat-grid-tile>
         <div>
           <span>In what order to display pages?</span>
-          <mat-radio-group aria-label="Select an option" formControlName="showStrategy">
+          <mat-radio-group aria-label="Select an option" formControlName="showStrategy" [(ngModel)]="amountPage">
             <mat-radio-button value="1">show sequentially</mat-radio-button>
             <mat-radio-button value="2">show randomly
-              <mat-form-field class="show-strategy">
+              <mat-form-field class="show-strategy" *ngIf="amountPage == '2'">
                 <mat-label>amount</mat-label>
-                <input matInput placeholder="amount" formControlName="pageAmount">
+                <input matInput placeholder="amount" formControlName="pageAmount" type="number">
               </mat-form-field>
               pages
             </mat-radio-button>
