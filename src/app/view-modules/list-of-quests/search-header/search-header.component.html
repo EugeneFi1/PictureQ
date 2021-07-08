@@ -1,11 +1,9 @@
 <div class="head">
-  <div>
-    <input type="text" placeholder="Quest name" autocomplete="off">
-  </div>
-  <div class="my-quest">
-    <p><mat-checkbox color="primary" class="check">My quests</mat-checkbox></p>
-  </div>
-  <div class="btn-create">
-    <button mat-raised-button color="primary">Create</button>
-  </div>
+
+  <input type="text" placeholder="Quest name" autocomplete="off">
+  <p>
+    <mat-checkbox color="primary" class="check">My quests</mat-checkbox>
+  </p>
+  <button mat-raised-button color="primary" [routerLink]="['/create-quest']">Create</button>
+
 </div>
