@@ -4,7 +4,7 @@ import {EditModulesComponent} from './edit-modules.component';
 import {CreateQuestComponent} from './create-quest/create-quest.component';
 import {SharedModule} from '../shared.modules';
 import {RouterModule} from '@angular/router';
-
+import {EditRoutingModule} from './edit-routing.module';
 
 
 @NgModule({
@@ -15,7 +15,7 @@ import {RouterModule} from '@angular/router';
   imports: [
     CommonModule,
     SharedModule,
-    RouterModule
+    EditRoutingModule
   ],
 
 })

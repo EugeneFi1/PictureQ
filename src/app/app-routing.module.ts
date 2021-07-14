@@ -9,15 +9,17 @@ import {CreateQuestComponent} from './modules/edit-modules/create-quest/create-q
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'list-of-quests',
-    pathMatch: 'full'
+    redirectTo: '',
+    pathMatch: 'full',
+    component: ListOfQuestsComponent
   },
   // {path: 'create-quest', component: CreateQuestComponent},
-  {path: 'list-of-quests', component: ListOfQuestsComponent},
-
-  {path: 'edit', loadChildren: './modules/edit-modules/edit.module#EditModule'},
-  {path: 'test', component: TestComponent},
+  // {path: 'test', component: TestComponent},
   {path: '**', component: NotFoundPageComponent},
+
+  {path: 'edit', loadChildren: () => import('./modules/edit-modules/edit.module').then(m => m.EditModule)},
+
+
 ];
 
 @NgModule({
