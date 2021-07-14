@@ -1,5 +1,4 @@
 import {NgModule} from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {QuestComponent} from './list-of-quests/quests/quest/quest.component';
 import {SearchHeaderComponent} from './list-of-quests/search-header/search-header.component';
 import {QuestsComponent} from './list-of-quests/quests/quests.component';
@@ -16,10 +15,8 @@ import {RouterModule} from '@angular/router';
     QuestsComponent,
     QuestComponent,
     SearchHeaderComponent,
-
   ],
   imports: [
-    CommonModule,
     SharedModule,
     RouterModule
   ]

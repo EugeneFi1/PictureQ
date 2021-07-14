@@ -1,4 +1,3 @@
-import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -10,12 +9,12 @@ import { EffectsModule } from '@ngrx/effects';
 import { StoreRouterConnectingModule } from '@ngrx/router-store';
 import { TestComponent } from './test/test.component';
 import {CustomerModule} from './test/customer/customer.module';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {createQuestFeatureKey, reducer} from './store/reducer/create-quest.reducer';
 import {NotFoundPageComponent} from './components/not-found-page/not-found-page.component';
 import {HttpClientModule} from '@angular/common/http';
-import {CommonModule} from '@angular/common';
-
+import {BrowserModule} from '@angular/platform-browser';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {ViewModule} from './modules/view-modules/view.module';
 
 @NgModule({
   declarations: [
@@ -24,9 +23,9 @@ import {CommonModule} from '@angular/common';
     NotFoundPageComponent,
   ],
   imports: [
-    CommonModule,
-    BrowserModule,
     AppRoutingModule,
+    BrowserModule,
+    BrowserAnimationsModule,
     StoreModule.forRoot(reducers, {
       metaReducers
     }),
@@ -34,9 +33,9 @@ import {CommonModule} from '@angular/common';
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
-    BrowserAnimationsModule,
     HttpClientModule,
-    CustomerModule
+    CustomerModule,
+    ViewModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -12,7 +12,7 @@ import {EditRoutingModule} from './edit-routing.module';
   ],
   imports: [
     SharedModule,
-    EditRoutingModule
+    EditRoutingModule,
   ],
 })
 export class EditModule { }

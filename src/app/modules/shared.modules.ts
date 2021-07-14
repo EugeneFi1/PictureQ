@@ -17,7 +17,6 @@ import {MatDividerModule} from '@angular/material/divider';
 import {MatTableModule} from '@angular/material/table';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {RouterModule} from '@angular/router';
-import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
@@ -28,10 +27,12 @@ import {MatSnackBarModule} from '@angular/material/snack-bar';
 import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
   imports: [
+    CommonModule,
     RouterModule,
     FormsModule,
     ReactiveFormsModule,
@@ -59,9 +60,11 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatChipsModule,
     MatDatepickerModule,
     MatNativeDateModule,
+    MatPaginatorModule,
     MatGridListModule
   ],
   exports: [
+    CommonModule,
     FormsModule,
     ReactiveFormsModule,
     MatTabsModule,
