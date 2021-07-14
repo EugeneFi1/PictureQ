@@ -9,12 +9,9 @@ import {SharedModule} from '../shared.modules';
 import {AppRoutingModule} from '../../app-routing.module';
 import {RouterModule, Routes} from '@angular/router';
 
-const routes: Routes = [{
-  path: 'view', children: [
-    {path: 'ist-of-quests', component: ListOfQuestsComponent},
-  ]
-}];
-
+// const routes: Routes = [
+//   {path: ''}
+//   ];
 @NgModule({
   declarations: [
     ViewModulesComponent,
@@ -28,7 +25,7 @@ const routes: Routes = [{
     CommonModule,
     SharedModule,
     AppRoutingModule,
-    RouterModule.forChild(routes)
+    // RouterModule.forChild(routes)
   ]
 })
 export class ViewModule {

@@ -7,12 +7,7 @@ import {AppRoutingModule} from '../../app-routing.module';
 import {Routes, RouterModule} from '@angular/router';
 
 const routes: Routes = [
-  {
-    path: 'edit' , children: [
       { path: 'create-quest', component: CreateQuestComponent}
-    ]
-  }
-
 ];
 
 @NgModule({
@@ -25,6 +20,9 @@ const routes: Routes = [
     SharedModule,
     AppRoutingModule,
     RouterModule.forChild(routes)
+  ],
+  exports:[
+    RouterModule
   ]
 })
 export class EditModule { }
