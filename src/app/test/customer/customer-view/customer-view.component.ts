@@ -8,7 +8,7 @@ import {selectCustomers} from '../store/selector/customer.selectors';
 @Component({
   selector: 'app-customer-view',
   templateUrl: './customer-view.component.html',
-  styleUrls: ['./customer-view.component.css']
+  styleUrls: ['./customer-view.component.less']
 })
 export class CustomerViewComponent implements OnInit {
   customers$: Observable<Customer[]>;

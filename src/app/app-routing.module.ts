@@ -1,23 +1,34 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
-import {ViewModulesComponent} from './view-modules/view-modules.component';
-import {EditModulesComponent} from './edit-modules/edit-modules.component';
+import {NgModule} from '@angular/core';
+import {Routes, RouterModule} from '@angular/router';
 import {TestComponent} from './test/test.component';
-import {CreateQuestComponent} from './edit-modules/create-quest/create-quest.component';
-import {ListOfQuestsComponent} from './view-modules/list-of-quests/list-of-quests.component';
-import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
+import {NotFoundPageComponent} from './components/not-found-page/not-found-page.component';
+import {ListOfQuestsComponent} from './modules/view-modules/list-of-quests/list-of-quests.component';
+import {CreateQuestComponent} from './modules/edit-modules/create-quest/create-quest.component';
+
 
 const routes: Routes = [
-  {path: 'view', component: ViewModulesComponent},
-  {path: 'edit', component: EditModulesComponent},
-  {path: 'test', component: TestComponent},
-  {path: 'create-quest', component: CreateQuestComponent},
-  {path: 'list-of-quests', component: ListOfQuestsComponent},
-  {path: '**', component: NotFoundPageComponent}
+
+  // {path: 'create-quest', component: CreateQuestComponent},
+  // {path: 'test', component: TestComponent},
+  {
+    path: 'edit',
+    loadChildren: () => import('./modules/edit-modules/edit.module').then(m => m.EditModule)
+  },
+  {
+    path: '',
+    redirectTo: '',
+    pathMatch: 'full',
+    component: ListOfQuestsComponent
+  },
+  {
+    path: '**',
+    component: NotFoundPageComponent
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
   exports: [RouterModule]
 })
-export class AppRoutingModule { }
+export class AppRoutingModule {
+}

@@ -1,5 +1,4 @@
 import { NgModule } from '@angular/core';
-import {CommonModule} from '@angular/common';
 import {MatStepperModule} from '@angular/material/stepper';
 import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatInputModule} from '@angular/material/input';
@@ -20,7 +19,6 @@ import {MatSidenavModule} from '@angular/material/sidenav';
 import {RouterModule} from '@angular/router';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
-import {BrowserModule} from '@angular/platform-browser';
 import {MatNativeDateModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatTabsModule} from '@angular/material/tabs';
@@ -34,12 +32,9 @@ import {MatGridListModule} from '@angular/material/grid-list';
 
 @NgModule({
   imports: [
-    CommonModule,
     RouterModule,
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     MatTabsModule,
     MatButtonModule,
     MatStepperModule,
@@ -67,10 +62,8 @@ import {MatGridListModule} from '@angular/material/grid-list';
     MatGridListModule
   ],
   exports: [
-    BrowserModule,
     FormsModule,
     ReactiveFormsModule,
-    BrowserAnimationsModule,
     MatTabsModule,
     MatStepperModule,
     MatFormFieldModule,
