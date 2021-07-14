@@ -13,9 +13,6 @@ import {CustomerModule} from './test/customer/customer.module';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {createQuestFeatureKey, reducer} from './store/reducer/create-quest.reducer';
 import {NotFoundPageComponent} from './components/not-found-page/not-found-page.component';
-import {SharedModule} from './modules/shared.modules';
-import {EditModule} from './modules/edit-modules/edit.module';
-import {ViewModule} from './modules/view-modules/view.module';
 import {HttpClientModule} from '@angular/common/http';
 import {CommonModule} from '@angular/common';
 
