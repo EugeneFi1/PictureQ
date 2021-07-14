@@ -15,12 +15,12 @@ import {CustomerModule} from './test/customer/customer.module';
 import { CreateQuestComponent } from './edit-modules/create-quest/create-quest.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {createQuestFeatureKey, reducer} from './store/reducer/create-quest.reducer';
-import { ListOfQuestsComponent } from './view-modules/list-of-quests/list-of-quests.component';
-import { QuestsComponent } from './view-modules/list-of-quests/quests/quests.component';
-import { QuestComponent } from './view-modules/list-of-quests/quests/quest/quest.component';
-import {SharedModule} from './shared/shared.modules';
+import {QuestComponent} from './view-modules/list-of-quests/quests/quest/quest.component';
+import {ListOfQuestsComponent} from './view-modules/list-of-quests/list-of-quests.component';
 import {NotFoundPageComponent} from './not-found-page/not-found-page.component';
-import { SearchHeaderComponent } from './view-modules/list-of-quests/search-header/search-header.component';
+import {SearchHeaderComponent} from './view-modules/list-of-quests/search-header/search-header.component';
+import {QuestsComponent} from './view-modules/list-of-quests/quests/quests.component';
+import {SharedModule} from './shared/shared.modules';
 
 
 @NgModule({
@@ -34,7 +34,7 @@ import { SearchHeaderComponent } from './view-modules/list-of-quests/search-head
     QuestsComponent,
     QuestComponent,
     NotFoundPageComponent,
-    SearchHeaderComponent
+    SearchHeaderComponent,
   ],
   imports: [
     BrowserModule,

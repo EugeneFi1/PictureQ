@@ -7,11 +7,12 @@ import {addQuest} from '../../store/action/create-quest.actions';
 import {Observable} from 'rxjs';
 import {selectQuest} from '../../store/selector/create-quest.selectors';
 import {Location} from '@angular/common';
+import {Title} from '@angular/platform-browser';
 
 @Component({
   selector: 'app-create-quest',
   templateUrl: './create-quest.component.html',
-  styleUrls: ['./create-quest.component.css']
+  styleUrls: ['./create-quest.component.less']
 })
 export class CreateQuestComponent implements OnInit {
   // @ts-ignore
@@ -26,8 +27,12 @@ export class CreateQuestComponent implements OnInit {
     picture: new FormControl()
   });
 
-  constructor(private store: Store<CreateQuestState>, private location: Location) {
+  constructor(private store: Store<CreateQuestState>,
+              private location: Location,
+              private titleService: Title
+  ) {
     this.quest$ = this.store.pipe(select(selectQuest));
+    this.titleService.setTitle('Create quest');
   }
 
   ngOnInit(): void {
