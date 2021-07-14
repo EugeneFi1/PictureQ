@@ -1,0 +1,28 @@
+<mat-card class="container mb-5" *ngIf="quest">
+
+  <div class="container">
+    <img mat-card-image src="{{quest.picture}}" alt="IMAGE">
+  </div>
+
+  <mat-card-content>
+
+    <mat-card-title class="text-oneline">
+      <h4>{{quest.name}}</h4>
+    </mat-card-title>
+    <mat-card-subtitle class="text-oneline">
+      {{quest.userName}}
+    </mat-card-subtitle>
+
+  </mat-card-content>
+
+  <hr>
+
+  <mat-card-actions class="action">
+
+    <button mat-raised-button color="primary">Start</button>
+    <button mat-raised-button color="primary">Edit</button>
+
+  </mat-card-actions>
+
+
+</mat-card>

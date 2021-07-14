@@ -1,11 +1,11 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {Quest} from '../../models/quest';
+import {Quest} from '../../../models/quest';
 import {select, Store} from '@ngrx/store';
-import {CreateQuestState} from '../../store/reducer/create-quest.reducer';
-import {addQuest} from '../../store/action/create-quest.actions';
+import {CreateQuestState} from '../../../store/reducer/create-quest.reducer';
+import {addQuest} from '../../../store/action/create-quest.actions';
 import {Observable} from 'rxjs';
-import {selectQuest} from '../../store/selector/create-quest.selectors';
+import {selectQuest} from '../../../store/selector/create-quest.selectors';
 import {Location} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 
