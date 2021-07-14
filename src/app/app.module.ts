@@ -17,6 +17,7 @@ import {SharedModule} from './modules/shared.modules';
 import {EditModule} from './modules/edit-modules/edit.module';
 import {ViewModule} from './modules/view-modules/view.module';
 import {HttpClientModule} from '@angular/common/http';
+import {CommonModule} from '@angular/common';
 
 
 @NgModule({
@@ -26,6 +27,7 @@ import {HttpClientModule} from '@angular/common/http';
     NotFoundPageComponent,
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     StoreModule.forRoot(reducers, {
@@ -35,12 +37,9 @@ import {HttpClientModule} from '@angular/common/http';
     StoreDevtoolsModule.instrument({maxAge: 25, logOnly: environment.production}),
     EffectsModule.forRoot([]),
     StoreRouterConnectingModule.forRoot(),
-    CustomerModule,
     BrowserAnimationsModule,
-    SharedModule,
-    EditModule,
-    ViewModule,
-    HttpClientModule
+    HttpClientModule,
+    CustomerModule
   ],
   providers: [],
   bootstrap: [AppComponent]
