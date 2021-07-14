@@ -6,12 +6,9 @@ import {QuestsComponent} from './list-of-quests/quests/quests.component';
 import {ListOfQuestsComponent} from './list-of-quests/list-of-quests.component';
 import {ViewModulesComponent} from './view-modules.component';
 import {SharedModule} from '../shared.modules';
-import {AppRoutingModule} from '../../app-routing.module';
-import {RouterModule, Routes} from '@angular/router';
+import {RouterModule} from '@angular/router';
 
-// const routes: Routes = [
-//   {path: ''}
-//   ];
+
 @NgModule({
   declarations: [
     ViewModulesComponent,
@@ -24,8 +21,7 @@ import {RouterModule, Routes} from '@angular/router';
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule,
-    // RouterModule.forChild(routes)
+    RouterModule
   ]
 })
 export class ViewModule {

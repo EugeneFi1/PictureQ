@@ -3,12 +3,9 @@ import { CommonModule } from '@angular/common';
 import {EditModulesComponent} from './edit-modules.component';
 import {CreateQuestComponent} from './create-quest/create-quest.component';
 import {SharedModule} from '../shared.modules';
-import {AppRoutingModule} from '../../app-routing.module';
-import {Routes, RouterModule} from '@angular/router';
+import {RouterModule} from '@angular/router';
 
-const routes: Routes = [
-      { path: 'create-quest', component: CreateQuestComponent}
-];
+
 
 @NgModule({
   declarations: [
@@ -18,11 +15,8 @@ const routes: Routes = [
   imports: [
     CommonModule,
     SharedModule,
-    AppRoutingModule,
-    RouterModule.forChild(routes)
-  ],
-  exports:[
     RouterModule
-  ]
+  ],
+
 })
 export class EditModule { }
