@@ -4,7 +4,7 @@ import {Quest} from '../../../../models/quest';
 @Component({
   selector: 'app-quest',
   templateUrl: './quest.component.html',
-  styleUrls: ['./quest.component.css']
+  styleUrls: ['./quest.component.less']
 })
 export class QuestComponent implements OnInit {
 
