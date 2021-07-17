@@ -1,6 +1,15 @@
 <div class="head">
+<!--добавить возможность очистки инпута(кнопка или онФокус)-->
 
-  <input type="text" placeholder="Quest name" autocomplete="off">
+
+  <mat-form-field class="field" appearance="fill">
+    <mat-label>Search...</mat-label>
+    <input matInput
+           [(ngModel)]="searchText"
+           (keyup)="sendInputValue(searchText)"
+           autocomplete="off">
+  </mat-form-field>
+
   <p>
     <mat-checkbox color="primary" class="check">My quests</mat-checkbox>
   </p>

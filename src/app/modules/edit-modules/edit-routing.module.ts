@@ -4,7 +4,7 @@ import {NgModule} from '@angular/core';
 import { CommonModule } from '@angular/common';
 
 const routes: Routes = [
-  { path: 'create', component: CreateQuestComponent}
+  { path: 'create', component: CreateQuestComponent},
 ];
 
 @NgModule({

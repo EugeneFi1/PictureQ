@@ -1,4 +1,4 @@
-import {Component, Input, OnInit} from '@angular/core';
+import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
 import {Quest} from '../../../../models/quest';
 
 @Component({
@@ -8,10 +8,19 @@ import {Quest} from '../../../../models/quest';
 })
 export class QuestsComponent implements OnInit {
 
-  @Input() quests: Quest[] | undefined;
+
+
+  @Input() value: any;
+  @Input() page: any;
+  @Input() quests: any;
+
+  finalLength: any
+
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
 
 }

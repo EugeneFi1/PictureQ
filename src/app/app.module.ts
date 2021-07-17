@@ -15,12 +15,17 @@ import {HttpClientModule} from '@angular/common/http';
 import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ViewModule} from './modules/view-modules/view.module';
+import {SharedModule} from './modules/shared.modules';
+import {JwPaginationComponent, JwPaginationModule} from 'jw-angular-pagination';
+
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
     NotFoundPageComponent,
+
+
   ],
   imports: [
     AppRoutingModule,
@@ -35,9 +40,10 @@ import {ViewModule} from './modules/view-modules/view.module';
     StoreRouterConnectingModule.forRoot(),
     HttpClientModule,
     CustomerModule,
-    ViewModule
+    ViewModule,
+    SharedModule,
+    JwPaginationModule
   ],
-  providers: [],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
