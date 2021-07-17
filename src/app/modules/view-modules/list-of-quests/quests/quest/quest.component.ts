@@ -1,5 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
 import {Quest} from '../../../../../models/quest';
+import {QuestInter} from '../../../../../models/questInter';
 
 
 @Component({
@@ -9,11 +10,14 @@ import {Quest} from '../../../../../models/quest';
 })
 export class QuestComponent implements OnInit {
 
-  @Input() quest: Quest | undefined
+  @Input() quest:  any;
 
   constructor() { }
 
   ngOnInit(): void {
+
   }
+
+
 
 }

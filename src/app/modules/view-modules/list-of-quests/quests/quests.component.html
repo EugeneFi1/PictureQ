@@ -1,7 +1,13 @@
 <div class="row quests">
-  <div class="col-md-3" *ngFor="let quest of quests">
-    <app-quest [quest]="quest">
 
+  <div class="col-md-3"
+       *ngFor="let quest of page | filter: value;
+       let finalLength = count"
+  >
+
+    <app-quest [quest]="quest">
     </app-quest>
+
   </div>
+
 </div>

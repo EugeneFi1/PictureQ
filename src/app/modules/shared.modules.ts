@@ -28,6 +28,8 @@ import {MatCheckboxModule} from '@angular/material/checkbox';
 import {MatPaginatorModule} from '@angular/material/paginator';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {CommonModule} from '@angular/common';
+import {CoverLoadingComponent} from '../components/cover-loading/cover-loading.component';
+import {FilterPipe} from '../pipes/filter.pipe';
 
 
 @NgModule({
@@ -91,9 +93,13 @@ import {CommonModule} from '@angular/common';
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatGridListModule
+    MatGridListModule,
+    CoverLoadingComponent,
+    FilterPipe,
   ],
   declarations: [
+    CoverLoadingComponent,
+    FilterPipe
   ]
 })
 export class SharedModule { }

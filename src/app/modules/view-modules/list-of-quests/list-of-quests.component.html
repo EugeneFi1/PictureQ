@@ -1,34 +1,30 @@
-<div class="list">
+<div class="list" *ngIf="!isLoading">
 
-<app-search-header>
-</app-search-header>
+  <app-search-header (sendValue)="getValue($event)">
+  </app-search-header>
 
-  <div class = "">
-    <div class="">
-      <app-quests>
+  <div class="mt-5">
 
-      </app-quests>
-      <div *ngIf="!quests || quests.length == 0">
-        <h2 class="text-center" >Ooops.. It seems we can't find any quests!</h2>
-      </div>
-    <div>
+    <app-quests [quests]="quests" [value]="filterValue" [page]="pageOfItems">
+    </app-quests>
 
-<!--      <mat-paginator *ngIf="quests && quests.length > 0"-->
-<!--                     [pageSizeOptions]="[9, 12, 24]"-->
-<!--      >-->
 
-<!--      </mat-paginator>-->
-
-      </div>
-
-    </div>
-
+  <div *ngIf="!isLoading && !quests || quests.length == 0">
+    <h2 class="text-center">Ooops.. It seems we can't find any quests!</h2>
   </div>
 
+
+    <jw-pagination
+        [items]="quests"
+        [pageSize]="8"
+        *ngIf="!isLoading && quests.length > 0"
+        (changePage)="onChangePage($event)"
+    >
+    </jw-pagination>
+
+  </div>
 </div>
-<!--          *ngIf = "products && products.length>0"-->
-<!--          [pageIndex]="pageIndex"-->
-<!--          [length]="length"-->
-<!--          [pageSizeOptions]="[9, 12, 24]"-->
-<!--          [pageSize]="pageSize"-->
-<!--          (page)="handlePageChange($event)"-->
+
+<app-cover-loading *ngIf="isLoading">
+
+</app-cover-loading>

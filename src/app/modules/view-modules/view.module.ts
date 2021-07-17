@@ -6,6 +6,7 @@ import {ListOfQuestsComponent} from './list-of-quests/list-of-quests.component';
 import {ViewModulesComponent} from './view-modules.component';
 import {SharedModule} from '../shared.modules';
 import {RouterModule} from '@angular/router';
+import {JwPaginationModule} from 'jw-angular-pagination';
 
 
 @NgModule({
@@ -16,10 +17,11 @@ import {RouterModule} from '@angular/router';
     QuestComponent,
     SearchHeaderComponent,
   ],
-  imports: [
-    SharedModule,
-    RouterModule
-  ]
+    imports: [
+        SharedModule,
+        RouterModule,
+        JwPaginationModule,
+    ]
 })
 export class ViewModule {
 }

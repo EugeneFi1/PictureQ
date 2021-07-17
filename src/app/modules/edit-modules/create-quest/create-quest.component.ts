@@ -37,6 +37,7 @@ export class CreateQuestComponent implements OnInit {
 
   ngOnInit(): void {
     this.quest$.subscribe(data => this.quest = data);
+
   }
 
   back(): void {
@@ -53,4 +54,5 @@ export class CreateQuestComponent implements OnInit {
     quest.showStrategy = customerData.showStrategy;
     this.store.dispatch(addQuest(quest));
   }
+
 }
