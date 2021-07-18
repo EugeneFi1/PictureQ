@@ -1,0 +1,30 @@
+<div>
+
+  <div class="preview">
+    <div class="preview-image">
+      <div class="preview-remove" (click)="resetImg()" *ngIf="!updatedFile.isHeavier">
+        X
+      </div>
+      <img mat-card-image
+           alt="Photo"
+           *ngIf="updatedFile.imgUrl"
+           [src]="updatedFile.imgUrl"
+      >
+      <mat-error *ngIf="updatedFile.isHeavier">The file must not weigh more than 1 MB</mat-error>
+      <div class="preview-info" *ngIf="!updatedFile.isHeavier">
+
+        <span>{{updatedFile.name}}</span>
+        {{updatedFile.weight}}
+      </div>
+    </div>
+  </div>
+
+  <input type="file"
+         (change)="onFileSelected($event)"
+         id="uploadCaptureInputFile"
+         #inp
+  >
+</div>
+
+
+<button class="btn" (click)="inp.click()">Choose picture</button>
