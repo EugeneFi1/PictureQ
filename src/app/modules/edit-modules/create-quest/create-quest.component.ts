@@ -8,6 +8,7 @@ import {Observable} from 'rxjs';
 import {selectQuest} from '../../../store/selector/create-quest.selectors';
 import {Location} from '@angular/common';
 import {Title} from '@angular/platform-browser';
+import {ValidFile} from '../../../components/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-create-quest',
@@ -26,6 +27,8 @@ export class CreateQuestComponent implements OnInit {
     showStrategy: new FormControl(),
     picture: new FormControl()
   });
+  selectedFile: File | undefined;
+  imgUrl: string | ArrayBuffer | null | undefined;
 
   constructor(private store: Store<CreateQuestState>,
               private location: Location,
@@ -54,5 +57,11 @@ export class CreateQuestComponent implements OnInit {
     quest.showStrategy = customerData.showStrategy;
     this.store.dispatch(addQuest(quest));
   }
+
+  getFile(validFile: ValidFile) {
+    this.selectedFile = validFile.selectedFile;
+    this.imgUrl = validFile.imgUrl
+  }
+
 
 }

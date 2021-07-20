@@ -30,6 +30,7 @@ import {MatGridListModule} from '@angular/material/grid-list';
 import {CommonModule} from '@angular/common';
 import {CoverLoadingComponent} from '../components/cover-loading/cover-loading.component';
 import {FilterPipe} from '../pipes/filter.pipe';
+import {FileUploaderComponent} from '../components/file-uploader/file-uploader.component';
 
 
 @NgModule({
@@ -96,9 +97,11 @@ import {FilterPipe} from '../pipes/filter.pipe';
     MatGridListModule,
     CoverLoadingComponent,
     FilterPipe,
+    FileUploaderComponent,
   ],
   declarations: [
     CoverLoadingComponent,
+    FileUploaderComponent,
     FilterPipe
   ]
 })

@@ -17,6 +17,7 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ViewModule} from './modules/view-modules/view.module';
 import {SharedModule} from './modules/shared.modules';
 import {JwPaginationComponent, JwPaginationModule} from 'jw-angular-pagination';
+import { FileUploaderComponent } from './components/file-uploader/file-uploader.component';
 
 
 @NgModule({
@@ -24,6 +25,7 @@ import {JwPaginationComponent, JwPaginationModule} from 'jw-angular-pagination';
     AppComponent,
     TestComponent,
     NotFoundPageComponent,
+
 
 
   ],
