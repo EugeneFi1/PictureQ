@@ -1,5 +1,6 @@
 import {Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {FormGroup} from '@angular/forms';
+import {ValidationMessage} from '../../models/labels/validation.message';
 
 export class ValidFile {
   selectedFile?: File;
@@ -16,11 +17,12 @@ export class ValidFile {
 })
 export class FileUploaderComponent {
 
-  @ViewChild('int') input?: ElementRef
-  // @Input() public form?: FormGroup;
+  @ViewChild('int') input?: ElementRef;
+  @Input() public parentForm!: FormGroup;
   @Output() correctFile = new EventEmitter<ValidFile>();
 
   updatedFile: ValidFile = new ValidFile();
+  fileWeightErrorMessage = ValidationMessage.weight;
 
   constructor() {
   }
@@ -38,7 +40,8 @@ export class FileUploaderComponent {
         img.src = reader.result as string;
         img.onload = () => {
           if (this.updatedFile.isHeavier) {
-            this.updatedFile.imgUrl = undefined;
+            this.updatedFile.imgUrl = null;
+            this.correctFile.emit(this.updatedFile);
           } else {
             this.updatedFile.imgUrl = reader.result;
             this.correctFile.emit(this.updatedFile);
@@ -47,7 +50,7 @@ export class FileUploaderComponent {
       }
     } else {
       this.updatedFile.selectedFile = undefined;
-      this.updatedFile.imgUrl = undefined;
+      this.updatedFile.imgUrl = null;
       this.updatedFile.isHeavier = false;
       this.updatedFile.weight = undefined;
       this.updatedFile.name = undefined;

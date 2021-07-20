@@ -1,4 +1,4 @@
-export class Quest {
+export class QuestClass {
   id: number | undefined;
   name: string | undefined;
   description: string | undefined;

@@ -1,4 +1,4 @@
-export interface QuestInter {
+export interface Quest {
   id: number;
   name: string;
   description: string;

@@ -1,7 +1,7 @@
 import { createAction } from '@ngrx/store';
-import {Quest} from '../../models/quest';
+import {QuestClass} from '../../models/api/questClass';
 
 export const addQuest = createAction(
-  '[Quest] Add Quest',
-  (quest: Quest) => ({quest})
+  '[QuestClass] Add QuestClass',
+  (quest: QuestClass) => ({quest})
 );

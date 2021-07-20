@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {select, Store} from '@ngrx/store';
 import {CreateQuestState} from '../../store/reducer/create-quest.reducer';
-import {Quest} from '../../models/quest';
+import {QuestClass} from '../../models/api/questClass';
 import {Observable} from 'rxjs';
 import {selectQuest} from '../../store/selector/create-quest.selectors';
 
@@ -12,8 +12,8 @@ import {selectQuest} from '../../store/selector/create-quest.selectors';
 })
 export class EditModulesComponent implements OnInit {
   // @ts-ignore
-  quest: Quest;
-  quest$: Observable<Quest>;
+  quest: QuestClass;
+  quest$: Observable<QuestClass>;
 
   constructor(private store: Store<CreateQuestState>) {
     this.quest$ = this.store.pipe(select(selectQuest));

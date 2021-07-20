@@ -1,5 +1,4 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output, SimpleChanges} from '@angular/core';
-import {Quest} from '../../../../models/quest';
+import {Component, Input, OnInit} from '@angular/core';
 
 @Component({
   selector: 'app-quests',

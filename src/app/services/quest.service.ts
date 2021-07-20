@@ -2,9 +2,8 @@ import { Injectable } from '@angular/core';
 import {HttpClient, HttpParams} from '@angular/common/http';
 import {environment} from '../../environments/environment';
 import {Observable} from 'rxjs';
-import {QuestInter} from '../models/questInter';
+import {Quest} from '../models/api/quest';
 
-import {FormBuilder} from '@angular/forms';
 
 @Injectable({
   providedIn: 'root'
@@ -15,16 +14,16 @@ export class QuestService {
   constructor(private http: HttpClient) { }
 
 
-  public getListOfQuests(): Observable<QuestInter[]>{
-    return this.http.get<QuestInter[]>(`${this.apiServerUrl}/quest/get-all`);
+  public getListOfQuests(): Observable<Quest[]>{
+    return this.http.get<Quest[]>(`${this.apiServerUrl}/quest/get-all`);
   }
 
   public deleteQuest(questId: number): Observable<void>{
     return this.http.delete<void>(`${this.apiServerUrl}/quest/delete/${questId}`)
   }
 
-  public updateQuest(questId: string, questUpdateModel: QuestInter): Observable<QuestInter>{
-    return this.http.put<QuestInter>(`${this.apiServerUrl}/quest/${questId}/update`, questUpdateModel)
+  public updateQuest(questId: string, questUpdateModel: Quest): Observable<Quest>{
+    return this.http.put<Quest>(`${this.apiServerUrl}/quest/${questId}/update`, questUpdateModel)
   }
 
 
