@@ -1,0 +1,37 @@
+<form [formGroup]="parentForm">
+  <div class="content" formGroupName="fileForm">
+
+    <div class="preview" *ngIf="updatedFile.imgUrl">
+      <div class="preview-image">
+        <div class="preview-remove" (click)="resetImg()" *ngIf="!updatedFile.isHeavier">
+          X
+        </div>
+        <img mat-card-image
+             alt="Photo"
+             *ngIf="updatedFile.imgUrl"
+             [src]="updatedFile.imgUrl"
+        >
+
+        <div class="preview-info" *ngIf="!updatedFile.isHeavier">
+          <span>{{updatedFile.name}}</span>
+          {{updatedFile.weight}}
+        </div>
+      </div>
+    </div>
+
+    <input type="file"
+           (change)="onFileSelected($event)"
+           id="uploadCaptureInputFile"
+           formControlName="file"
+           #inp
+    >
+
+    <button class="btn" (click)="inp.click()" type="button">Choose picture</button>
+  </div>
+  <div class="errors">
+
+    <mat-error *ngIf="updatedFile.isHeavier">{{fileWeightErrorMessage}}</mat-error>
+
+  </div>
+
+</form>

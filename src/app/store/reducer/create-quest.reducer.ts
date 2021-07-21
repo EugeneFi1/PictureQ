@@ -1,15 +1,15 @@
 import {Action, createReducer, on} from '@ngrx/store';
 import * as CreateQuestActions from '../action/create-quest.actions';
-import {Quest} from '../../models/quest';
+import {QuestClass} from '../../models/api/questClass';
 
 export const createQuestFeatureKey = 'createQuest';
 
 export interface CreateQuestState {
-  quest: Quest;
+  quest: QuestClass;
 }
 
 export const initialState: CreateQuestState = {
-  quest: new Quest()
+  quest: new QuestClass()
 };
 
 

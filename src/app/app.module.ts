@@ -16,16 +16,14 @@ import {BrowserModule} from '@angular/platform-browser';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {ViewModule} from './modules/view-modules/view.module';
 import {SharedModule} from './modules/shared.modules';
-import {JwPaginationComponent, JwPaginationModule} from 'jw-angular-pagination';
+import {JwPaginationModule} from 'jw-angular-pagination';
 
 
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    NotFoundPageComponent,
-
-
+    NotFoundPageComponent
   ],
   imports: [
     AppRoutingModule,

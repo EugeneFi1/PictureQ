@@ -1,7 +1,4 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {Quest} from '../../../../../models/quest';
-import {QuestInter} from '../../../../../models/questInter';
-
 
 @Component({
   selector: 'app-quest',
