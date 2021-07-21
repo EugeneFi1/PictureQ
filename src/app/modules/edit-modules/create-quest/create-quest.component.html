@@ -3,13 +3,14 @@
   <h1 class="text-center mt-4 text-uppercase">Create quest</h1>
 
   <form [formGroup]="form" class="example-form">
-    <mat-grid-list cols="2" rowHeight="20em">
+    <div class="all-cont">
+      <div class="flex-container">
 
-      <mat-grid-tile style="width: 200px">
-        <div>
+        <div class="d-flex flex-column mt-75">
+
           <mat-form-field class="example-full-width">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="ex. name" formControlName="name">
+            <input matInput placeholder="ex. name" formControlName="name" required>
             <mat-error *ngIf="form?.get('name')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
             <mat-error *ngIf="form?.get('name')?.hasError('pattern')">{{questNameErrorMessage}}</mat-error>
           </mat-form-field>
@@ -25,22 +26,9 @@
           </mat-form-field>
 
         </div>
-      </mat-grid-tile>
 
-      <mat-grid-tile style="width: 200px">
-
-        <app-file-uploader
-          (correctFile)="getFile($event)"
-          [parentForm]="form"
-        >
-        </app-file-uploader>
-
-
-      </mat-grid-tile>
-
-      <mat-grid-tile style="width: 200px">
-        <div>
-          <label id = "select-option-label" >How to display answers?</label>
+        <div class="mt-100">
+          <label id="select-option-label">How to display answers?</label>
           <mat-radio-group
             aria-labelledby="select-option-label"
             formControlName="replyStrategy"
@@ -58,42 +46,38 @@
             </mat-radio-button>
           </mat-radio-group>
         </div>
-      </mat-grid-tile>
-      <mat-grid-tile style="width: 200px">
-        <div>
-          <label id="option-label" >In what order to display pages?</label>
-          <mat-radio-group
-            aria-labelledby="option-label"
-            formControlName="showStrategy"
-            class="example-radio-group"
-            color="primary"
-            [(ngModel)]="orderDisplayOption"
-            required
-          >
-            <mat-radio-button
-              *ngFor="let opt of orderOption"
-              [value]="opt"
-              class="example-radio-button"
-            >
-              {{opt}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </mat-grid-tile>
 
-    </mat-grid-list>
-    <button mat-raised-button color="primary"
-            type="submit"
-            class="next-button"
-            [disabled]="isHeavier || form.invalid"
-            (click)="submit()"
-    >
-      Next
-    </button>
+      </div>
+      <div class="d-flex align-items-center ms-5">
+        <app-file-uploader
+          (correctFile)="getFile($event)"
+          [parentForm]="form"
+        >
+        </app-file-uploader>
+      </div>
+    </div>
+    <div class="bottom-button">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="back()"
+        type="button"
+      >
+        Back
+      </button>
 
+      <button mat-raised-button color="primary"
+              type="submit"
+              [disabled]="isHeavier || form.invalid"
+              (click)="submit()"
+              [routerLink]="['page']"
+      >
+        Next
+      </button>
+    </div>
   </form>
 
-  <button mat-raised-button color="primary" class="back-button" (click)="back()">Back</button>
+
 
 </div>
 
@@ -101,3 +85,25 @@
 
 </app-cover-loading>
 
+
+<!--      <mat-grid-tile style="width: 200px">-->
+<!--        <div>-->
+<!--          <label id="option-label" >In what order to display pages?</label>-->
+<!--          <mat-radio-group-->
+<!--            aria-labelledby="option-label"-->
+<!--            formControlName="showStrategy"-->
+<!--            class="example-radio-group"-->
+<!--            color="primary"-->
+<!--            [(ngModel)]="orderDisplayOption"-->
+<!--            required-->
+<!--          >-->
+<!--            <mat-radio-button-->
+<!--              *ngFor="let opt of orderOption"-->
+<!--              [value]="opt"-->
+<!--              class="example-radio-button"-->
+<!--            >-->
+<!--              {{opt}}-->
+<!--            </mat-radio-button>-->
+<!--          </mat-radio-group>-->
+<!--        </div>-->
+<!--      </mat-grid-tile>-->

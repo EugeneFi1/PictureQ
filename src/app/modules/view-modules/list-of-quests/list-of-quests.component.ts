@@ -2,6 +2,8 @@ import {Component, OnDestroy, OnInit} from '@angular/core';
 import {Title} from '@angular/platform-browser';
 import {QuestService} from '../../../services/quest.service';
 import {finalize} from 'rxjs/operators';
+import {Quest} from '../../../models/api/quest';
+import {Subscription} from 'rxjs';
 
 
 @Component({
@@ -11,11 +13,10 @@ import {finalize} from 'rxjs/operators';
 })
 export class ListOfQuestsComponent implements OnInit, OnDestroy {
 
-  sub: any;
-  quests: any;
+  questSubsc?: Subscription;
+  quests!: Quest[];
   isLoading = false;
-  filterValue: any;
-
+  filterValue!: string;
   pageOfItems: any;
 
   constructor(private titleService: Title,
@@ -26,17 +27,18 @@ export class ListOfQuestsComponent implements OnInit, OnDestroy {
 
   ngOnInit(): void {
     this.isLoading = true;
-    this.sub = this.questService.getListOfQuests()
+    this.questSubsc = this.questService.getListOfQuests()
       .pipe(finalize( () => {
         this.isLoading = false;
       })).subscribe(
-      data => {
-        this.quests = data;
-      })
+        data => {
+          this.quests = data;
+        })
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    if(this.questSubsc)
+      this.questSubsc.unsubscribe()
   }
 
 

@@ -1,4 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {Quest} from '../../../../models/api/quest';
 
 @Component({
   selector: 'app-quests',
@@ -9,11 +10,9 @@ export class QuestsComponent implements OnInit {
 
 
 
-  @Input() value: any;
+  @Input() value!: string;
   @Input() page: any;
-  @Input() quests: any;
-
-  finalLength: any
+  @Input() quests!: Quest[];
 
   constructor() { }
 

@@ -1,6 +1,7 @@
 import {Component, Input, OnInit, Output, EventEmitter, ViewChild, ElementRef} from '@angular/core';
 import {FormGroup} from '@angular/forms';
 import {ValidationMessage} from '../../models/labels/validation.message';
+import {logger} from 'codelyzer/util/logger';
 
 export class ValidFile {
   selectedFile?: File;
@@ -17,7 +18,7 @@ export class ValidFile {
 })
 export class FileUploaderComponent {
 
-  @ViewChild('int') input?: ElementRef;
+  @ViewChild('inp') input!: ElementRef;
   @Input() public parentForm!: FormGroup;
   @Output() correctFile = new EventEmitter<ValidFile>();
 
@@ -55,16 +56,17 @@ export class FileUploaderComponent {
       this.updatedFile.weight = undefined;
       this.updatedFile.name = undefined;
       this.correctFile.emit(this.updatedFile);
+      this.input.nativeElement.value = '';
     }
+    console.log(this.updatedFile);
   }
-
-
 
   resetImg() {
     this.updatedFile.imgUrl = undefined;
     this.updatedFile.selectedFile = undefined;
     this.updatedFile.weight = undefined;
     this.updatedFile.name = undefined;
+    this.input.nativeElement.value = '';
   }
 
   public bytesToSize(bytes: any) {

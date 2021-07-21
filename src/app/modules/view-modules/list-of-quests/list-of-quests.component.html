@@ -9,16 +9,16 @@
     </app-quests>
 
 
-  <div *ngIf="!isLoading && !quests || quests.length == 0">
-    <h2 class="text-center">Ooops.. It seems we can't find any quests!</h2>
-  </div>
+    <div *ngIf="!isLoading && !quests || quests?.length == 0">
+      <h2 class="text-center">Ooops.. It seems we can't find any quests!</h2>
+    </div>
 
 
     <jw-pagination
-        [items]="quests"
-        [pageSize]="8"
-        *ngIf="!isLoading && quests.length > 0"
-        (changePage)="onChangePage($event)"
+      [items]="quests"
+      [pageSize]="8"
+      *ngIf="!isLoading && quests.length > 0"
+      (changePage)="onChangePage($event)"
     >
     </jw-pagination>
 
