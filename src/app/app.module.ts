@@ -19,11 +19,12 @@ import {SharedModule} from './modules/shared.modules';
 import {JwPaginationModule} from 'jw-angular-pagination';
 
 
+
 @NgModule({
   declarations: [
     AppComponent,
     TestComponent,
-    NotFoundPageComponent
+    NotFoundPageComponent,
   ],
   imports: [
     AppRoutingModule,
@@ -41,6 +42,8 @@ import {JwPaginationModule} from 'jw-angular-pagination';
     ViewModule,
     SharedModule,
     JwPaginationModule
+  ],
+  exports: [
   ],
   bootstrap: [AppComponent]
 })

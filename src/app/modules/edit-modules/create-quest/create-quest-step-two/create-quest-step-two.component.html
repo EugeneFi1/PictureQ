@@ -1,24 +1,24 @@
-<div class="m-3">
-  <h1 class="text-center mt-4 text-uppercase">Create Page</h1>
-  <form [formGroup]="form" class="example-form">
+<div>
+
+  <form [formGroup]="secondStepForm" class="example-form">
     <div class="all-cont">
       <div class="input-container">
 
         <mat-form-field class="example-full-width">
           <mat-label>Title</mat-label>
           <input matInput placeholder="ex. name" formControlName="title" required>
-          <mat-error *ngIf="form?.get('title')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
-          <mat-error *ngIf="form?.get('title')?.hasError('pattern')">{{questNameErrorMessage}}</mat-error>
+          <mat-error *ngIf="secondStepForm?.get('title')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
+          <mat-error *ngIf="secondStepForm?.get('title')?.hasError('pattern')">{{questNameErrorMessage}}</mat-error>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Description</mat-label>
-          <textarea matInput placeholder="ex. explanation" formControlName="explanation"></textarea>
+          <textarea matInput  formControlName="explanation"></textarea>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
           <mat-label>Explanation</mat-label>
-          <textarea matInput placeholder="ex. description" formControlName="description"></textarea>
+          <textarea matInput formControlName="description"></textarea>
         </mat-form-field>
 
       </div>
@@ -36,14 +36,14 @@
     <div class="d-flex justify-content-center mt-100">
       <mat-form-field appearance="fill" class="mb-3 choose-ans">
         <mat-label>Choose type of question</mat-label>
-        <mat-select required >
+        <mat-select required>
           <mat-option value="Answer option">Answer option</mat-option>
-          <mat-option value="Match matches" >Match matches</mat-option>
+          <mat-option value="Match matches">Match matches</mat-option>
           <mat-option value="Choose the right picture<">Choose the right picture</mat-option>
           <mat-option value="Find the object(s) on the picture">Find the object(s) on the picture</mat-option>
           <mat-option value="Enter your answer">Enter your answer</mat-option>
         </mat-select>
-        <mat-error *ngIf="form.get('categoryId')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
+        <mat-error *ngIf="secondStepForm.get('categoryId')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
 
@@ -53,26 +53,23 @@
         <button
           mat-raised-button
           color="primary"
-          (click)="back()"
+          matStepperPrevious
           type="button"
         >
           Back
         </button>
-
       </div>
-
       <div>
         <button mat-raised-button color="primary"
-                type="submit"
-                [disabled]="form.invalid"
-
+                type="button"
+                [disabled]="secondStepForm.invalid"
+                (click)="addPage()"
         >
-          Next page
+          Add another page
         </button>
         <button mat-raised-button color="primary"
-                type="submit"
-                [disabled]="form.invalid"
-                (click)="submit()"
+                type="button"
+                [disabled]="secondStepForm.invalid"
         >
           Finished quest
         </button>
@@ -83,7 +80,6 @@
 
 
 </div>
-
 
 
 <!--<app-cover-loading>-->

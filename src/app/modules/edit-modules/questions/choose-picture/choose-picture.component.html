@@ -1,0 +1,61 @@
+<form [formGroup]="form">
+  <div class="all-cont">
+
+    <div class="question">
+
+      <app-question-form [parentForm]="form">
+      </app-question-form>
+
+    </div>
+
+    <div class="answer">
+      <h1>Answers</h1>
+
+      <div class="input-check" *ngFor="let div of newDivs; index as idx">
+
+        <div class="d-flex align-items-center">
+
+          <div class="mt-5 ms-3">
+
+            <app-file-uploader
+              (correctFile)="getFile($event)"
+              [parentForm]="form"
+            >
+
+            </app-file-uploader>
+
+          </div>
+
+          <mat-checkbox class="check" color="primary"></mat-checkbox>
+
+          <button
+            *ngIf="newDivs.length >= 2"
+            type="button"
+            mat-mini-fab
+            color="primary"
+            class="btn-remove"
+            (click)="removeNewDiv(idx)"
+          >
+            -
+          </button>
+        </div>
+      </div>
+
+      <button
+        type="button"
+        mat-mini-fab
+        color="primary"
+        class="btn"
+        (click)="addNewDiv()"
+        [disabled]="newDivs.length >= 5"
+      >
+        <mat-icon>plus_one</mat-icon>
+      </button>
+
+    </div>
+
+  </div>
+
+</form>
+
+

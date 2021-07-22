@@ -1,109 +1,43 @@
-<div class="m-3" *ngIf="!isLoading">
+<mat-horizontal-stepper linear #stepper
+                        labelPosition="bottom"
+                        *ngIf="firstStepForm"
+>
 
-  <h1 class="text-center mt-4 text-uppercase">Create quest</h1>
+  <mat-step [stepControl]="firstStepForm">
+    <ng-template matStepLabel>Create quest</ng-template>
+    <app-create-quest-step-one
+      [firstStepForm]="firstStepForm"
 
-  <form [formGroup]="form" class="example-form">
-    <div class="all-cont">
-      <div class="flex-container">
+    >
 
-        <div class="d-flex flex-column mt-75">
+    </app-create-quest-step-one>
+  </mat-step>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Name</mat-label>
-            <input matInput placeholder="ex. name" formControlName="name" required>
-            <mat-error *ngIf="form?.get('name')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
-            <mat-error *ngIf="form?.get('name')?.hasError('pattern')">{{questNameErrorMessage}}</mat-error>
-          </mat-form-field>
+  <mat-step [stepControl]="secondStepForm">
+    <ng-template matStepLabel>Create page</ng-template>
+    <app-create-quest-step-two
+      [secondStepForm]="secondStepForm"
+    >
+    </app-create-quest-step-two>
+  </mat-step>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Description</mat-label>
-            <textarea matInput placeholder="ex. description" formControlName="description"></textarea>
-          </mat-form-field>
 
-          <mat-form-field class="example-full-width">
-            <mat-label>Explanation</mat-label>
-            <textarea matInput placeholder="ex. explanation" formControlName="explanation"></textarea>
-          </mat-form-field>
+  <mat-step>
+    <ng-template matStepLabel>Confirm quest</ng-template>
+    <app-create-quest-step-three>
 
-        </div>
-
-        <div class="mt-100">
-          <label id="select-option-label">How to display answers?</label>
-          <mat-radio-group
-            aria-labelledby="select-option-label"
-            formControlName="replyStrategy"
-            class="example-radio-group"
-            color="primary"
-            [(ngModel)]="selectOption"
-            required
-          >
-            <mat-radio-button
-              class="example-radio-button"
-              *ngFor="let option of options"
-              [value]="option"
-            >
-              {{option}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-
-      </div>
-      <div class="d-flex align-items-center ms-5">
-        <app-file-uploader
-          (correctFile)="getFile($event)"
-          [parentForm]="form"
-        >
-        </app-file-uploader>
-      </div>
-    </div>
-    <div class="bottom-button">
-      <button
-        mat-raised-button
-        color="primary"
-        (click)="back()"
-        type="button"
-      >
-        Back
-      </button>
-
-      <button mat-raised-button color="primary"
-              type="submit"
-              [disabled]="isHeavier || form.invalid"
-              (click)="submit()"
-              [routerLink]="['page']"
-      >
-        Next
-      </button>
-    </div>
-  </form>
+    </app-create-quest-step-three>
+  </mat-step>
 
 
 
-</div>
-
-<app-cover-loading *ngIf="isLoading">
-
-</app-cover-loading>
 
 
-<!--      <mat-grid-tile style="width: 200px">-->
-<!--        <div>-->
-<!--          <label id="option-label" >In what order to display pages?</label>-->
-<!--          <mat-radio-group-->
-<!--            aria-labelledby="option-label"-->
-<!--            formControlName="showStrategy"-->
-<!--            class="example-radio-group"-->
-<!--            color="primary"-->
-<!--            [(ngModel)]="orderDisplayOption"-->
-<!--            required-->
-<!--          >-->
-<!--            <mat-radio-button-->
-<!--              *ngFor="let opt of orderOption"-->
-<!--              [value]="opt"-->
-<!--              class="example-radio-button"-->
-<!--            >-->
-<!--              {{opt}}-->
-<!--            </mat-radio-button>-->
-<!--          </mat-radio-group>-->
-<!--        </div>-->
-<!--      </mat-grid-tile>-->
+
+
+
+
+
+
+
+</mat-horizontal-stepper>

@@ -31,6 +31,7 @@ import {CommonModule} from '@angular/common';
 import {CoverLoadingComponent} from '../components/cover-loading/cover-loading.component';
 import {FilterPipe} from '../pipes/filter.pipe';
 import {FileUploaderComponent} from '../components/file-uploader/file-uploader.component';
+import {QuestionFormComponent} from "../components/question-form/question-form.component";
 
 
 @NgModule({
@@ -98,11 +99,13 @@ import {FileUploaderComponent} from '../components/file-uploader/file-uploader.c
     CoverLoadingComponent,
     FilterPipe,
     FileUploaderComponent,
+    QuestionFormComponent,
   ],
   declarations: [
     CoverLoadingComponent,
     FileUploaderComponent,
-    FilterPipe
+    FilterPipe,
+    QuestionFormComponent,
   ]
 })
 export class SharedModule { }

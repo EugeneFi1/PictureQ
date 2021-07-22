@@ -4,4 +4,5 @@ export const ValidationMessage = {
   expansion: "Picture expansion should only be '?'",
   resolution: "Picture resolution can only be ? px by ? px",
   weight: "The file must not weigh more than 1 MB",
+  min: "Min length of the question is 10 symbol"
 }

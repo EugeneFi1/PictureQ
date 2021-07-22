@@ -1,0 +1,33 @@
+<form [formGroup]="form">
+  <div class="all-cont">
+
+    <div class="question">
+
+      <app-question-form [parentForm]="form">
+      </app-question-form>
+
+    </div>
+
+    <div class="answer">
+
+      <h1>Answers</h1>
+      <div class="input-check" *ngFor="let div of newDivs; index as idx">
+
+        <div class="d-flex align-items-center mt-5 ms-3">
+
+          <app-file-uploader
+            (correctFile)="getFile($event)"
+            [parentForm]="form"
+          >
+          </app-file-uploader>
+        </div>
+
+      </div>
+
+    </div>
+
+  </div>
+
+</form>
+
+
