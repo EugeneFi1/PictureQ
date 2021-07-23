@@ -1,10 +1,10 @@
 export class QuestClass {
-  id: number | undefined;
-  name: string | undefined;
-  description: string | undefined;
-  picture: string | undefined;
-  explanation: string | undefined;
-  replyStrategy: string | undefined;
-  userName: string |undefined;
-  showStrategy: string | undefined;
+  id: number;
+  name: string;
+  description: string;
+  picture: string;
+  explanation: string;
+  replyStrategy: string;
+  userName: string;
+  showStrategy: string;
 }
