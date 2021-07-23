@@ -1,9 +1,9 @@
-<form [formGroup]="form">
+<form [formGroup]="findObjectForm">
   <div class="all-cont">
 
     <div class="question">
 
-      <app-question-form [parentForm]="form">
+      <app-question-form [parentForm]="findObjectForm">
       </app-question-form>
 
     </div>
@@ -11,23 +11,31 @@
     <div class="answer">
 
       <h1>Answers</h1>
-      <div class="input-check" *ngFor="let div of newDivs; index as idx">
+
 
         <div class="d-flex align-items-center mt-5 ms-3">
 
           <app-file-uploader
             (correctFile)="getFile($event)"
-            [parentForm]="form"
+            [parentForm]="findObjectForm"
           >
           </app-file-uploader>
         </div>
 
-      </div>
+      <button
+        mat-raised-button
+        color="primary"
+        class="mt-3"
+        (click)="openImg()"
+        [disabled]="!imgUrl"
+
+      >
+        Choose object on the picture
+      </button>
+
 
     </div>
-
   </div>
-
 </form>
 
 

@@ -1,9 +1,9 @@
-<form [formGroup]="form">
+<form [formGroup]="choosePictureForm">
   <div class="all-cont">
 
     <div class="question">
 
-      <app-question-form [parentForm]="form">
+      <app-question-form [parentForm]="choosePictureForm">
       </app-question-form>
 
     </div>
@@ -12,24 +12,19 @@
       <h1>Answers</h1>
 
       <div class="input-check" *ngFor="let div of newDivs; index as idx">
-
         <div class="d-flex align-items-center">
-
           <div class="mt-5 ms-3">
-
             <app-file-uploader
               (correctFile)="getFile($event)"
-              [parentForm]="form"
+              [parentForm]="choosePictureForm"
             >
-
             </app-file-uploader>
-
           </div>
-
+          <div class="check-btn">
           <mat-checkbox class="check" color="primary"></mat-checkbox>
 
           <button
-            *ngIf="newDivs.length >= 2"
+            *ngIf="newDivs.length > 2"
             type="button"
             mat-mini-fab
             color="primary"
@@ -38,6 +33,7 @@
           >
             -
           </button>
+          </div>
         </div>
       </div>
 

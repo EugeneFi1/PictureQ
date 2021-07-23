@@ -8,6 +8,7 @@ import {MatchMatchesComponent} from "./questions/match-matches/match-matches.com
 import {AnswerQuestionComponent} from "./questions/answer-question/answer-question.component";
 import {ChoosePictureComponent} from "./questions/choose-picture/choose-picture.component";
 import {FindObjectOnPictureComponent} from "./questions/find-object-on-picture/find-object-on-picture.component";
+import {CreateQuestStepTwoComponent} from "./create-quest/create-quest-step-two/create-quest-step-two.component";
 
 const routes: Routes = [
   {

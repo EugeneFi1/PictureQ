@@ -25,27 +25,35 @@
       <div>
         <button
           mat-raised-button color="primary"
-          class="mr-auto ml-auto mt-2"
+          class="mr-auto ml-auto mt-3"
           type="button"
         >
           Settings style for this page
         </button>
       </div>
-
     </div>
+
+      <app-answer-option *ngFor="let ansOpt of answerOptionArray"></app-answer-option>
+      <app-answer-question *ngFor="let ansQue of answerQuestionArray "></app-answer-question>
+      <app-choose-picture *ngFor="let choosePic of choosePictureArray"></app-choose-picture>
+      <app-find-object-on-picture *ngFor="let findObj of findObjectArray"></app-find-object-on-picture>
+      <app-match-matches *ngFor="let matMat of matchMatchesArray"></app-match-matches>
+
+
     <div class="d-flex justify-content-center mt-100">
       <mat-form-field appearance="fill" class="mb-3 choose-ans">
         <mat-label>Choose type of question</mat-label>
         <mat-select required>
-          <mat-option value="Answer option">Answer option</mat-option>
-          <mat-option value="Match matches">Match matches</mat-option>
-          <mat-option value="Choose the right picture<">Choose the right picture</mat-option>
-          <mat-option value="Find the object(s) on the picture">Find the object(s) on the picture</mat-option>
-          <mat-option value="Enter your answer">Enter your answer</mat-option>
+          <mat-option value="Answer option" (click)="addAnswerOption()">Answer option</mat-option>
+          <mat-option value="Match matches" (click)="addMatchMatches()">Match matches</mat-option>
+          <mat-option value="Choose the right picture" (click)="addChoosePicture()">Choose the right picture</mat-option>
+          <mat-option value="Find the object(s) on the picture" (click)="addFindObject()">Find the object(s) on the picture</mat-option>
+          <mat-option value="Enter your answer" (click)="addAnswerQuestion()">Enter your answer</mat-option>
         </mat-select>
         <mat-error *ngIf="secondStepForm.get('categoryId')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
+
 
 
     <div class="bottom-button">
@@ -77,7 +85,6 @@
     </div>
 
   </form>
-
 
 </div>
 

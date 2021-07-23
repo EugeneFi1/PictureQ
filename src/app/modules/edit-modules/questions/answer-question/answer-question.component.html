@@ -1,11 +1,11 @@
 <div>
 
-  <form [formGroup]="form" class="example-form">
+  <form [formGroup]="answerQuestionForm" class="example-form">
     <div class="all-cont">
 
       <div class="question">
 
-        <app-question-form [parentForm]="form">
+        <app-question-form [parentForm]="answerQuestionForm">
         </app-question-form>
 
 
@@ -13,7 +13,7 @@
         <div class="mt-5 ms-3">
           <app-file-uploader
             (correctFile)="getFile($event)"
-            [parentForm]="form"
+            [parentForm]="answerQuestionForm"
           >
           </app-file-uploader>
         </div>

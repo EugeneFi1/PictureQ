@@ -1,67 +1,63 @@
-<form [formGroup]="form" class="h-50">
-  <div class="all-cont">
+<div>
+  <form [formGroup]="matchMatchesForm" class="example-form">
+    <div class="all-cont">
+      <div class="question">
+        <app-question-form [parentForm]="matchMatchesForm">
+        </app-question-form>
 
-    <div class="question">
-      <app-question-form [parentForm]="form">
-      </app-question-form>
-
-      <div class="mt-5 ms-3">
-        <app-file-uploader
-          (correctFile)="getFile($event)"
-          [parentForm]="form"
-        >
-        </app-file-uploader>
-      </div>
-
-    </div>
-
-
-    <div class="answer">
-      <h1>Answers</h1>
-
-      <div class="input-check" *ngFor="let div of newDivs; index as idx">
-
-        <div class="d-flex align-items-center">
-          <p class="index">{{idx + 1 }}</p>
-          <mat-form-field class="example-full-width mx-3" appearance="fill">
-            <mat-label>Enter answer option</mat-label>
-            <input matInput formControlName="answer">
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width" appearance="fill">
-            <mat-label>Enter answer option</mat-label>
-            <input matInput formControlName="answer">
-          </mat-form-field>
-
-
-          <button
-            *ngIf="newDivs.length >= 2"
-            type="button"
-            mat-mini-fab
-            color="primary"
-            class="btn-remove"
-            (click)="removeNewDiv(idx)"
+        <div class="mt-5 ms-3">
+          <app-file-uploader
+            (correctFile)="getFile($event)"
+            [parentForm]="matchMatchesForm"
           >
-            -
-          </button>
+          </app-file-uploader>
         </div>
+
       </div>
 
-      <button
-        type="button"
-        mat-mini-fab
-        color="primary"
-        class="btn"
-        (click)="addNewDiv()"
-        [disabled]="newDivs.length >= 5"
-      >
-        <mat-icon>plus_one</mat-icon>
-      </button>
+      <div class="answer">
+        <h1>Answers</h1>
+        <div class="input-check" *ngFor="let div of newDivs; index as idx">
 
+          <div class="d-flex align-items-center">
+            <p class="index">{{idx + 1 }}</p>
+            <mat-form-field class="example-full-width mx-3" appearance="fill">
+              <mat-label>Enter answer option</mat-label>
+              <input matInput formControlName="answer">
+            </mat-form-field>
+
+            <mat-form-field class="example-full-width" appearance="fill">
+              <mat-label>Enter answer option</mat-label>
+              <input matInput formControlName="answer">
+            </mat-form-field>
+
+
+            <button
+              *ngIf="newDivs.length >= 2"
+              type="button"
+              mat-mini-fab
+              color="primary"
+              class="btn-remove"
+              (click)="removeNewDiv(idx)"
+            >
+              -
+            </button>
+          </div>
+        </div>
+
+        <button
+          type="button"
+          mat-mini-fab
+          color="primary"
+          class="btn"
+          (click)="addNewDiv()"
+          [disabled]="newDivs.length >= 5"
+        >
+          <mat-icon>plus_one</mat-icon>
+        </button>
+
+      </div>
     </div>
-
-  </div>
-
-</form>
-
+  </form>
+</div>
 

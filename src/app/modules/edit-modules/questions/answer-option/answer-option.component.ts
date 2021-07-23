@@ -1,4 +1,4 @@
-import {Component, ElementRef, Input, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
@@ -11,7 +11,7 @@ import {ValidFile} from "../../../../components/file-uploader/file-uploader.comp
 export class AnswerOptionComponent implements OnInit {
 
   newDivs: addDivisions[] = [1];
-  form!: FormGroup;
+  answerOptionForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   minLengthErrorMessage = ValidationMessage.min;
@@ -24,7 +24,7 @@ export class AnswerOptionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form = this.createForm()
+    this.answerOptionForm = this.createForm()
 
   }
 

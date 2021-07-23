@@ -12,7 +12,7 @@ import {addDivisions} from "../answer-option/answer-option.component";
 export class AnswerQuestionComponent implements OnInit {
 
   newDivs: addDivisions[] = [1];
-  form!: FormGroup;
+  answerQuestionForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   minLengthErrorMessage = ValidationMessage.min;
@@ -25,7 +25,7 @@ export class AnswerQuestionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form = this.createForm()
+    this.answerQuestionForm = this.createForm()
 
   }
 

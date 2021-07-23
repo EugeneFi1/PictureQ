@@ -11,8 +11,8 @@ import {ValidFile} from "../../../../components/file-uploader/file-uploader.comp
 })
 export class ChoosePictureComponent implements OnInit {
 
-  newDivs: addDivisions[] = [1];
-  form!: FormGroup;
+  newDivs: addDivisions[] = [addDivisions, addDivisions];
+  choosePictureForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   minLengthErrorMessage = ValidationMessage.min;
@@ -25,7 +25,7 @@ export class ChoosePictureComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.form = this.createForm()
+    this.choosePictureForm = this.createForm()
 
   }
 

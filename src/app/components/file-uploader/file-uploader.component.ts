@@ -54,17 +54,18 @@ export class FileUploaderComponent {
       this.updatedFile.isHeavier = false;
       this.updatedFile.weight = undefined;
       this.updatedFile.name = undefined;
-      this.correctFile.emit(this.updatedFile);
       this.input.nativeElement.value = '';
+      this.correctFile.emit(this.updatedFile);
     }
   }
 
   public resetImg() {
-    this.updatedFile.imgUrl = undefined;
     this.updatedFile.selectedFile = undefined;
+    this.updatedFile.imgUrl = undefined;
     this.updatedFile.weight = undefined;
     this.updatedFile.name = undefined;
     this.input.nativeElement.value = '';
+    this.correctFile.emit(this.updatedFile);
   }
 
   public bytesToSize(bytes: any) {

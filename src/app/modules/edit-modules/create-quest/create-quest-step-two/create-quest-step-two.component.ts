@@ -12,6 +12,13 @@ import {Title} from "@angular/platform-browser";
 export class CreateQuestStepTwoComponent implements OnInit {
 
   @Input() secondStepForm!: FormGroup;
+
+  answerOptionArray: any = [];
+  answerQuestionArray: any = [];
+  choosePictureArray: any = [];
+  findObjectArray:  any = [];
+  matchMatchesArray: any = [];
+
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
 
@@ -24,9 +31,27 @@ export class CreateQuestStepTwoComponent implements OnInit {
 
   }
 
-
   public addPage(){
 
   }
 
+  addAnswerOption() {
+    this.answerOptionArray = [...this.answerOptionArray, this.answerOptionArray.length]
+  }
+
+  addMatchMatches() {
+    this.matchMatchesArray = [...this.matchMatchesArray, this.matchMatchesArray.length]
+  }
+
+  addChoosePicture() {
+    this.choosePictureArray = [...this.choosePictureArray, this.choosePictureArray.length]
+  }
+
+  addFindObject() {
+    this.findObjectArray = [...this.findObjectArray, this.findObjectArray.length]
+  }
+
+  addAnswerQuestion() {
+    this.answerQuestionArray = [...this.answerQuestionArray, this.answerQuestionArray.length]
+  }
 }
