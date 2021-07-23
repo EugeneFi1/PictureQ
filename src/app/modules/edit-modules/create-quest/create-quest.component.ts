@@ -3,13 +3,14 @@ import {FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
 import {QuestClass} from '../../../models/api/questClass';
 import {select, Store} from '@ngrx/store';
 import {CreateQuestState} from '../../../store/reducer/create-quest.reducer';
-import {addQuest} from '../../../store/action/create-quest.actions';
 import {Observable} from 'rxjs';
 import {selectQuest} from '../../../store/selector/create-quest.selectors';
 import {Location} from '@angular/common';
 import {Title} from '@angular/platform-browser';
 import {ValidFile} from '../../../components/file-uploader/file-uploader.component';
 import {ValidationMessage} from '../../../models/labels/validation.message';
+import {options, orderOption} from '../../../utils/quest-options';
+import {questNameRegExp} from '../../../utils/reg-exp';
 
 @Component({
   selector: 'app-create-quest',
@@ -30,49 +31,18 @@ export class CreateQuestComponent implements OnInit {
   quest?: QuestClass;
   quest$: Observable<QuestClass>;
   form!: FormGroup;
-  // createQuest = new FormGroup({
-  //   name: new FormControl(''),
-  //   description: new FormControl(''),
-  //   explanation: new FormControl(false),
-  //   replyStrategy: new FormControl(),
-  //   showStrategy: new FormControl(),
-  //   picture: new FormControl()
-  // });
   selectedFile: File | undefined;
   imgUrl: string | ArrayBuffer | null | undefined;
-  options: string[] = [
-      'don`t show',
-      'show answer at the end',
-      'show answer after user response',
-      'show answer immediately'
-  ];
-  orderOption: string[] = [
-      'show sequentially',
-      'show in reverse order',
-      'show everything in random order'
-  ];
+  options: string[] = options;
+  orderOption: string[] = orderOption;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   isHeavier: boolean | undefined = false;
-  isLoading = false;
-
-  // saveQuest(customerData: any): void {
-  //   const quest = new QuestClass();
-  //   quest.name = customerData.name;
-  //   quest.description = customerData.description;
-  //   quest.explanation = customerData.explanation;
-  //   quest.replyStrategy = customerData.replyStrategy;
-  //   quest.showStrategy = customerData.showStrategy;
-  //   this.store.dispatch(addQuest(quest));
-  // }
   selectOption?: string;
   orderDisplayOption?: string;
 
   ngOnInit(): void {
-    this.isLoading = true;
-    // this.quest$.subscribe(data => this.quest = data);
     this.form = this.createQuestForm();
-    this.isLoading = false;
   }
 
   back(): void {
@@ -103,4 +73,3 @@ export class CreateQuestComponent implements OnInit {
   }
 }
 
-const questNameRegExp = '^[^\\d\\s]{2}[\\w\\s]{0,20}$';
