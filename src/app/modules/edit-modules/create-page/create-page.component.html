@@ -1,0 +1,24 @@
+<mat-form-field appearance="fill">
+  <mat-label>Choose type of questions</mat-label>
+  <mat-select>
+    <mat-option *ngFor="let question of questions"
+                [value]="question.value"
+                (onSelectionChange)="chooseQuestionType($event)"
+    >
+      {{question.viewValue}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+
+<ng-container [ngSwitch]="questionType">
+  <ng-container *ngSwitchCase="'answer-option'">
+    <app-answer-option>
+    </app-answer-option>
+  </ng-container>
+  <ng-container *ngSwitchCase="'match-matches'">
+    <app-match-matches>
+    </app-match-matches>
+  </ng-container>
+</ng-container>
+
+
