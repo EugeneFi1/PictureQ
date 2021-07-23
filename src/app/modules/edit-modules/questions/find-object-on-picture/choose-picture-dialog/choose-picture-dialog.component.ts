@@ -25,6 +25,7 @@ export class ChoosePictureDialogComponent implements OnInit {
     if (this.points.length < 5) {
       this.points.push({a: e.offsetX, b: e.offsetY});
     }
+    console.log(this.points)
   }
 
 }

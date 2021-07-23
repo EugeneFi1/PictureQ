@@ -5,7 +5,6 @@ import {SharedModule} from '../shared.modules';
 import {EditRoutingModule} from './edit-routing.module';
 import { CreateQuestStepTwoComponent } from './create-quest/create-quest-step-two/create-quest-step-two.component';
 import { CreateQuestStepThreeComponent } from './create-quest/create-quest-step-three/create-quest-step-three.component';
-import { CreateQuestStepFourComponent } from './create-quest/create-quest-step-four/create-quest-step-four.component';
 import { CreateQuestStepOneComponent } from './create-quest/create-quest-step-one/create-quest-step-one.component';
 import { AnswerOptionComponent } from './questions/answer-option/answer-option.component';
 import { MatchMatchesComponent } from './questions/match-matches/match-matches.component';
@@ -21,7 +20,6 @@ import { ChoosePictureDialogComponent } from './questions/find-object-on-picture
     CreateQuestComponent,
     CreateQuestStepTwoComponent,
     CreateQuestStepThreeComponent,
-    CreateQuestStepFourComponent,
     CreateQuestStepOneComponent,
     AnswerOptionComponent,
     MatchMatchesComponent,
