@@ -18,6 +18,15 @@ import {ValidationMessage} from '../../../models/labels/validation.message';
 })
 export class CreateQuestComponent implements OnInit {
 
+  constructor(private store: Store<CreateQuestState>,
+              private location: Location,
+              private titleService: Title,
+              private formBuilder: FormBuilder,
+  ) {
+    this.quest$ = this.store.pipe(select(selectQuest));
+    this.titleService.setTitle('Create quest');
+  }
+
   quest?: QuestClass;
   quest$: Observable<QuestClass>;
   form!: FormGroup;
@@ -36,36 +45,16 @@ export class CreateQuestComponent implements OnInit {
       'show answer at the end',
       'show answer after user response',
       'show answer immediately'
-  ]
+  ];
   orderOption: string[] = [
       'show sequentially',
       'show in reverse order',
       'show everything in random order'
-  ]
+  ];
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   isHeavier: boolean | undefined = false;
-  isLoading: boolean = false;
-
-  constructor(private store: Store<CreateQuestState>,
-              private location: Location,
-              private titleService: Title,
-              private formBuilder: FormBuilder,
-  ) {
-    this.quest$ = this.store.pipe(select(selectQuest));
-    this.titleService.setTitle('Create quest');
-  }
-
-  ngOnInit(): void {
-    this.isLoading = true;
-    // this.quest$.subscribe(data => this.quest = data);
-    this.form = this.createQuestForm()
-    this.isLoading = false
-  }
-
-  back(): void {
-    this.location.back();
-  }
+  isLoading = false;
 
   // saveQuest(customerData: any): void {
   //   const quest = new QuestClass();
@@ -79,7 +68,18 @@ export class CreateQuestComponent implements OnInit {
   selectOption?: string;
   orderDisplayOption?: string;
 
-  public getFile(validFile: ValidFile) {
+  ngOnInit(): void {
+    this.isLoading = true;
+    // this.quest$.subscribe(data => this.quest = data);
+    this.form = this.createQuestForm();
+    this.isLoading = false;
+  }
+
+  back(): void {
+    this.location.back();
+  }
+
+  public getFile(validFile: ValidFile): void {
     this.selectedFile = validFile.selectedFile;
     this.imgUrl = validFile.imgUrl;
     this.isHeavier = validFile.isHeavier;
@@ -87,20 +87,20 @@ export class CreateQuestComponent implements OnInit {
 
   public createQuestForm(): FormGroup{
     return this.formBuilder.group({
-      name: new FormControl(null,[Validators.required, Validators.pattern(questNameRegExp)]),
+      name: new FormControl(null, [Validators.required, Validators.pattern(questNameRegExp)]),
       description: new FormControl(null),
       explanation: new FormControl(null),
       replyStrategy: new FormControl([Validators.required]),
       showStrategy: new FormControl([Validators.required]),
       fileForm: this.formBuilder.group({
-        file: new FormControl(null,[Validators.required])
+        file: new FormControl(null, [Validators.required])
       })
-    })
+    });
   }
 
-  submit() {
-    console.log(this.form.value)
+  submit(): void {
+    console.log(this.form.value);
   }
 }
 
-const questNameRegExp = "^[^\\d\\s]{2}[\\w\\s]{0,20}$";
+const questNameRegExp = '^[^\\d\\s]{2}[\\w\\s]{0,20}$';
