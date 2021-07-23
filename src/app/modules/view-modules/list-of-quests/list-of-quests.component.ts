@@ -10,18 +10,15 @@ import {finalize} from 'rxjs/operators';
   styleUrls: ['./list-of-quests.component.less']
 })
 export class ListOfQuestsComponent implements OnInit, OnDestroy {
-
   sub: any;
   quests: any;
   isLoading = false;
   filterValue: any;
-
   pageOfItems: any;
 
   constructor(private titleService: Title,
               private questService: QuestService) {
     this.titleService.setTitle('List of quests');
-
   }
 
   ngOnInit(): void {
@@ -39,11 +36,9 @@ export class ListOfQuestsComponent implements OnInit, OnDestroy {
     this.sub.unsubscribe();
   }
 
-
   getValue(data: any): void {
     this.filterValue = data;
   }
-
 
   onChangePage(pageOfItems: Array<any>): void {
     this.pageOfItems = pageOfItems;
