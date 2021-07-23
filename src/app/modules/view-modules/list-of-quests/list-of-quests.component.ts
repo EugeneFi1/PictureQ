@@ -32,20 +32,20 @@ export class ListOfQuestsComponent implements OnInit, OnDestroy {
       })).subscribe(
       data => {
         this.quests = data;
-      })
+      });
   }
 
   ngOnDestroy(): void {
-    this.sub.unsubscribe()
+    this.sub.unsubscribe();
   }
 
 
-  getValue(data: any) {
+  getValue(data: any): void {
     this.filterValue = data;
   }
 
 
-  onChangePage(pageOfItems: Array<any>) {
+  onChangePage(pageOfItems: Array<any>): void {
     this.pageOfItems = pageOfItems;
   }
 }
