@@ -23,7 +23,7 @@ export class CreateQuestFormService {
       replyStrategy: new FormControl([Validators.required]),
       // showStrategy: new FormControl([Validators.required]),
       fileForm: this.formBuilder.group({
-        file: new FormControl(null,[Validators.required])
+        file: new FormControl()
       })
     })
   }

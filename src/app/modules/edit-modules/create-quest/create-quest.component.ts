@@ -1,9 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {Location} from '@angular/common';
 import {Title} from '@angular/platform-browser';
-import {CreateQuestStepOneComponent} from "./create-quest-step-one/create-quest-step-one.component";
-import {CreateQuestStepTwoComponent} from "./create-quest-step-two/create-quest-step-two.component";
-import {CreateQuestStepThreeComponent} from "./create-quest-step-three/create-quest-step-three.component";
 import {FormGroup} from "@angular/forms";
 import {CreateQuestFormService} from "./service/create-quest-form-service";
 

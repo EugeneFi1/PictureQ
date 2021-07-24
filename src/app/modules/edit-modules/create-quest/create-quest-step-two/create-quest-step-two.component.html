@@ -13,7 +13,7 @@
 
         <mat-form-field class="example-full-width">
           <mat-label>Description</mat-label>
-          <textarea matInput  formControlName="explanation"></textarea>
+          <textarea matInput formControlName="explanation"></textarea>
         </mat-form-field>
 
         <mat-form-field class="example-full-width">
@@ -33,11 +33,12 @@
       </div>
     </div>
 
-      <app-answer-option *ngFor="let ansOpt of answerOptionArray"></app-answer-option>
-      <app-answer-question *ngFor="let ansQue of answerQuestionArray "></app-answer-question>
-      <app-choose-picture *ngFor="let choosePic of choosePictureArray"></app-choose-picture>
-      <app-find-object-on-picture *ngFor="let findObj of findObjectArray"></app-find-object-on-picture>
-      <app-match-matches *ngFor="let matMat of matchMatchesArray"></app-match-matches>
+
+    <app-answer-option *ngFor="let ansOpt of answerOptionArray"></app-answer-option>
+    <app-match-matches *ngFor="let matMat of matchMatchesArray"></app-match-matches>
+    <app-choose-picture *ngFor="let choosePic of choosePictureArray"></app-choose-picture>
+    <app-find-object-on-picture *ngFor="let findObj of findObjectArray"></app-find-object-on-picture>
+    <app-answer-question *ngFor="let ansQue of answerQuestionArray "></app-answer-question>
 
 
     <div class="d-flex justify-content-center mt-100">
@@ -46,14 +47,16 @@
         <mat-select required>
           <mat-option value="Answer option" (click)="addAnswerOption()">Answer option</mat-option>
           <mat-option value="Match matches" (click)="addMatchMatches()">Match matches</mat-option>
-          <mat-option value="Choose the right picture" (click)="addChoosePicture()">Choose the right picture</mat-option>
-          <mat-option value="Find the object(s) on the picture" (click)="addFindObject()">Find the object(s) on the picture</mat-option>
+          <mat-option value="Choose the right picture" (click)="addChoosePicture()">Choose the right picture
+          </mat-option>
+          <mat-option value="Find the object(s) on the picture" (click)="addFindObject()">Find the object(s) on the
+            picture
+          </mat-option>
           <mat-option value="Enter your answer" (click)="addAnswerQuestion()">Enter your answer</mat-option>
         </mat-select>
         <mat-error *ngIf="secondStepForm.get('categoryId')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
-
 
 
     <div class="bottom-button">

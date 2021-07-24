@@ -18,14 +18,10 @@ export class CreateQuestStepTwoComponent implements OnInit {
   choosePictureArray: any = [];
   findObjectArray:  any = [];
   matchMatchesArray: any = [];
-
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
 
-  constructor(private location: Location,
-              private titleService: Title,
-              private formBuilder: FormBuilder
-  ) { }
+  constructor() { }
 
   ngOnInit(): void {
 
@@ -36,22 +32,22 @@ export class CreateQuestStepTwoComponent implements OnInit {
   }
 
   addAnswerOption() {
-    this.answerOptionArray = [...this.answerOptionArray, this.answerOptionArray.length]
+    this.answerOptionArray = [...this.answerOptionArray, this.answerOptionArray.length];
   }
 
   addMatchMatches() {
-    this.matchMatchesArray = [...this.matchMatchesArray, this.matchMatchesArray.length]
+    this.matchMatchesArray = [...this.matchMatchesArray, this.matchMatchesArray.length];
   }
 
   addChoosePicture() {
-    this.choosePictureArray = [...this.choosePictureArray, this.choosePictureArray.length]
+    this.choosePictureArray = [...this.choosePictureArray, this.choosePictureArray.length];
   }
 
   addFindObject() {
-    this.findObjectArray = [...this.findObjectArray, this.findObjectArray.length]
+    this.findObjectArray = [...this.findObjectArray, this.findObjectArray.length];
   }
 
   addAnswerQuestion() {
-    this.answerQuestionArray = [...this.answerQuestionArray, this.answerQuestionArray.length]
+    this.answerQuestionArray = [...this.answerQuestionArray, this.answerQuestionArray.length];
   }
 }

@@ -7,14 +7,11 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
   templateUrl: './choose-picture-dialog.component.html',
   styleUrls: ['./choose-picture-dialog.component.less']
 })
-export class ChoosePictureDialogComponent implements OnInit {
+export class ChoosePictureDialogComponent  {
 
   points: any = [];
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-  }
-
-  ngOnInit(): void {
   }
 
   removePoint(idx: number) {
@@ -25,7 +22,6 @@ export class ChoosePictureDialogComponent implements OnInit {
     if (this.points.length < 5) {
       this.points.push({a: e.offsetX, b: e.offsetY});
     }
-    console.log(this.points)
   }
 
 }
