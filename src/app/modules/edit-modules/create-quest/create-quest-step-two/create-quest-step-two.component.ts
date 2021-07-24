@@ -1,9 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
-import {Location} from "@angular/common";
-import {Title} from "@angular/platform-browser";
-
 @Component({
   selector: 'app-create-quest-step-two',
   templateUrl: './create-quest-step-two.component.html',
@@ -24,11 +21,9 @@ export class CreateQuestStepTwoComponent implements OnInit {
   constructor() { }
 
   ngOnInit(): void {
-
   }
 
   public addPage(){
-
   }
 
   addAnswerOption() {

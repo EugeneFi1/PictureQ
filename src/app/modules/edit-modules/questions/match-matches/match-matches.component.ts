@@ -16,9 +16,9 @@ export class MatchMatchesComponent implements OnInit {
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   minLengthErrorMessage = ValidationMessage.min;
-  private selectedFile: File | undefined;
-  private imgUrl: string | ArrayBuffer | null | undefined;
-  private isHeavier?: boolean;
+  selectedFile?: File;
+  imgUrl?: string | ArrayBuffer | null;
+  isHeavier?: boolean;
   checked: boolean = false;
 
   constructor(private formBuilder: FormBuilder

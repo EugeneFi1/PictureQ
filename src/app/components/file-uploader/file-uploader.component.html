@@ -1,10 +1,13 @@
 <form [formGroup]="parentForm">
-
+  <div class="cont">
   <div formGroupName="fileForm" class="all-content">
 
     <div class="preview" *ngIf="updatedFile.imgUrl">
       <div class="preview-image">
-        <div class="preview-remove" (click)="resetImg()" *ngIf="!updatedFile.isHeavier">
+        <div class="preview-remove"
+             (click)="resetImg()"
+             *ngIf="!updatedFile.isHeavier || updatedFile.isRightExpansion"
+        >
           X
         </div>
 
@@ -31,9 +34,10 @@
   </div>
 
   <button class="btn" (click)="inp.click()" type="button">Choose picture</button>
-
+  </div>
   <div class="errors">
     <mat-error *ngIf="updatedFile.isHeavier">{{fileWeightErrorMessage}}</mat-error>
+    <mat-error *ngIf="!updatedFile.isRightExpansion">{{fileExpansionErrorMessage}}</mat-error>
   </div>
 
 </form>

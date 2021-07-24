@@ -15,13 +15,14 @@
     <ol class="rounded">
 
       <li *ngFor="let p of points; index as idx">
-
+         <div class="list-text">
         <span>x:{{p.a}} y:{{p.b}}</span>
-
+         </div>
+        <div class="list-remove">
           <button mat-mini-fab color="accent" class="mini" (click)="removePoint(idx)">
             -
           </button>
-
+        </div>
       </li>
 
     </ol>

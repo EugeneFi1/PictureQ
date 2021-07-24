@@ -3,7 +3,7 @@ import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
 import {MatDialog} from "@angular/material/dialog";
-import {ChoosePictureDialogComponent} from "./choose-picture-dialog/choose-picture-dialog.component";
+import {FindObjectDialogComponent} from "./find-object-dialog/find-object-dialog.component";
 
 @Component({
   selector: 'app-find-object-on-picture',
@@ -53,7 +53,7 @@ export class FindObjectOnPictureComponent implements OnInit {
 
 
   openImg() {
-    let dialogRef = this.dialog.open(ChoosePictureDialogComponent,{
+    let dialogRef = this.dialog.open(FindObjectDialogComponent,{
         width: '100%',
         height: '95%',
         data: this.imgUrl

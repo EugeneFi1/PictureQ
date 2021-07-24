@@ -4,10 +4,10 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-choose-picture-dialog',
-  templateUrl: './choose-picture-dialog.component.html',
-  styleUrls: ['./choose-picture-dialog.component.less']
+  templateUrl: './find-object-dialog.component.html',
+  styleUrls: ['./find-object-dialog.component.less']
 })
-export class ChoosePictureDialogComponent  {
+export class FindObjectDialogComponent {
 
   points: any = [];
 

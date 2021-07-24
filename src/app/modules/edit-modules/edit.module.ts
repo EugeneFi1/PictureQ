@@ -11,7 +11,7 @@ import { MatchMatchesComponent } from './questions/match-matches/match-matches.c
 import { ChoosePictureComponent } from './questions/choose-picture/choose-picture.component';
 import { FindObjectOnPictureComponent } from './questions/find-object-on-picture/find-object-on-picture.component';
 import { AnswerQuestionComponent } from './questions/answer-question/answer-question.component';
-import { ChoosePictureDialogComponent } from './questions/find-object-on-picture/choose-picture-dialog/choose-picture-dialog.component';
+import { FindObjectDialogComponent } from './questions/find-object-on-picture/find-object-dialog/find-object-dialog.component';
 
 
 @NgModule({
@@ -26,7 +26,7 @@ import { ChoosePictureDialogComponent } from './questions/find-object-on-picture
     ChoosePictureComponent,
     FindObjectOnPictureComponent,
     AnswerQuestionComponent,
-    ChoosePictureDialogComponent,
+    FindObjectDialogComponent,
   ],
   imports: [
     SharedModule,

@@ -1,6 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {QuestClass} from "../../../../models/api/questClass";
-import {FormBuilder, FormGroup} from "@angular/forms";
+import {FormGroup} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {Store} from "@ngrx/store";
 import {CreateQuestState} from "../../../../store/reducer/create-quest.reducer";
@@ -16,9 +15,8 @@ import {ValidFile} from "../../../../components/file-uploader/file-uploader.comp
 export class CreateQuestStepOneComponent implements OnInit {
 
   @Input() firstStepForm!: FormGroup;
-  quest?: QuestClass;
-  selectedFile: File | undefined;
-  imgUrl: string | ArrayBuffer | null | undefined;
+  selectedFile?: File;
+  imgUrl?: string | ArrayBuffer | null;
   options: string[] = [
     'don`t show',
     'show answer at the end',
@@ -45,21 +43,16 @@ export class CreateQuestStepOneComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 
   public back(): void {
     this.location.back();
   }
 
-
-
   public getFile(validFile: ValidFile) {
     this.selectedFile = validFile.selectedFile;
     this.imgUrl = validFile.imgUrl;
     this.isHeavier = validFile.isHeavier;
   }
-
-
 
 }

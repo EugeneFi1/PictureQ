@@ -8,9 +8,17 @@
 
           <mat-form-field class="example-full-width">
             <mat-label>Name</mat-label>
-            <input matInput placeholder="ex. name" formControlName="name" required>
-            <mat-error *ngIf="firstStepForm?.get('name')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
-            <mat-error *ngIf="firstStepForm?.get('name')?.hasError('pattern')">{{questNameErrorMessage}}</mat-error>
+            <input matInput
+                   placeholder="ex. name"
+                   formControlName="name"
+                   required autocomplete="off"
+            >
+            <mat-error *ngIf="firstStepForm?.get('name')?.hasError('required')">
+              {{requiredErrorMessage}}
+            </mat-error>
+            <mat-error *ngIf="firstStepForm?.get('name')?.hasError('pattern')">
+              {{questNameErrorMessage}}
+            </mat-error>
           </mat-form-field>
 
           <mat-form-field class="example-full-width">

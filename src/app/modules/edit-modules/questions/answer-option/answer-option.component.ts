@@ -1,17 +1,17 @@
-import {Component, OnInit} from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
 
 @Component({
-  selector: 'app-answer-option',
+  selector: 'app-answer-option-v2',
   templateUrl: './answer-option.component.html',
   styleUrls: ['./answer-option.component.less']
 })
 export class AnswerOptionComponent implements OnInit {
 
   newDivs: addDivisions[] = [1];
-  answerOptionForm!: FormGroup;
+  matchMatchesForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
   minLengthErrorMessage = ValidationMessage.min;
@@ -24,7 +24,7 @@ export class AnswerOptionComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    this.answerOptionForm = this.createForm()
+    this.matchMatchesForm = this.createForm()
 
   }
 
@@ -36,6 +36,7 @@ export class AnswerOptionComponent implements OnInit {
       ]),
       description: new FormControl(null),
       explanation: new FormControl(null),
+      answer: new FormControl(null, [Validators.required]),
       fileForm: this.formBuilder.group({
         file: new FormControl(null,[Validators.required])
       })
@@ -50,12 +51,15 @@ export class AnswerOptionComponent implements OnInit {
 
   addNewDiv() {
     this.newDivs.push(new addDivisions())
+
   }
 
   removeNewDiv(idx: number) {
     this.newDivs.splice(idx, 1)
   }
+
 }
 
-export class addDivisions {
+export class addDivisions{
+
 }

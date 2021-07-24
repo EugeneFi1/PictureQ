@@ -8,6 +8,7 @@ export class ValidFile {
   imgUrl?: string | null | ArrayBuffer;
   name?: string;
   weight?: string;
+  isRightExpansion?: boolean = true;
 }
 
 @Component({
@@ -23,6 +24,7 @@ export class FileUploaderComponent {
 
   updatedFile: ValidFile = new ValidFile();
   fileWeightErrorMessage = ValidationMessage.weight;
+  fileExpansionErrorMessage = ValidationMessage.expansion;
 
   constructor() {
   }
@@ -30,16 +32,20 @@ export class FileUploaderComponent {
   public onFileSelected($event: any) {
     this.updatedFile.selectedFile = $event.target.files[0];
     if (this.updatedFile.selectedFile) {
-      this.updatedFile.weight = this.bytesToSize(this.updatedFile.selectedFile.size)
-      this.updatedFile.name = this.updatedFile.selectedFile.name
+      this.updatedFile.weight = this.bytesToSize(this.updatedFile.selectedFile.size);
+      this.updatedFile.name = this.updatedFile.selectedFile.name;
       this.updatedFile.isHeavier = this.updatedFile.selectedFile.size >= 1e6;
+      this.updatedFile.isRightExpansion =
+        this.updatedFile.selectedFile.type == 'image/png' ||
+        this.updatedFile.selectedFile.type == 'image/jpeg' ||
+        this.updatedFile.selectedFile.type == 'image/jpg';
       const reader = new FileReader();
       reader.readAsDataURL(this.updatedFile.selectedFile);
       reader.onload = () => {
         const img = new Image();
         img.src = reader.result as string;
         img.onload = () => {
-          if (this.updatedFile.isHeavier) {
+          if (this.updatedFile.isHeavier || !this.updatedFile.isRightExpansion) {
             this.updatedFile.imgUrl = null;
             this.correctFile.emit(this.updatedFile);
           } else {
@@ -54,6 +60,7 @@ export class FileUploaderComponent {
       this.updatedFile.isHeavier = false;
       this.updatedFile.weight = undefined;
       this.updatedFile.name = undefined;
+      this.updatedFile.isRightExpansion = true;
       this.input.nativeElement.value = '';
       this.correctFile.emit(this.updatedFile);
     }
@@ -64,6 +71,8 @@ export class FileUploaderComponent {
     this.updatedFile.imgUrl = undefined;
     this.updatedFile.weight = undefined;
     this.updatedFile.name = undefined;
+    this.updatedFile.isHeavier = false;
+    this.updatedFile.isRightExpansion = true;
     this.input.nativeElement.value = '';
     this.correctFile.emit(this.updatedFile);
   }
