@@ -2,17 +2,13 @@
 
   <form [formGroup]="answerQuestionForm" class="example-form">
     <div class="all-cont">
-
       <div class="question">
 
         <app-question-form [parentForm]="answerQuestionForm">
         </app-question-form>
 
-
-
         <div class="mt-5 ms-3">
           <app-file-uploader
-            (correctFile)="getFile($event)"
             [parentForm]="answerQuestionForm"
           >
           </app-file-uploader>
@@ -20,26 +16,21 @@
 
       </div>
 
-
       <div class="answer">
         <h1>Answer</h1>
 
         <div class="input-check">
-
           <div class="d-flex align-items-center">
             <mat-form-field class="example-full-width w-300" appearance="fill">
               <mat-label>Enter answer option</mat-label>
               <input matInput formControlName="answer">
+              <mat-error
+                *ngIf="answerQuestionForm?.get('answer')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
             </mat-form-field>
-
           </div>
         </div>
 
       </div>
-
     </div>
-
   </form>
-
-
 </div>

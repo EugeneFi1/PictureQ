@@ -8,41 +8,74 @@
     <div class="answer">
       <h1>Answers</h1>
       <div class="cont">
-      <div class="input-check" *ngFor="let div of newDivs; index as idx">
-        <div class="d-flex align-items-center">
-          <div class="mt-5 ms-3">
-            <app-file-uploader
-              (correctFile)="getFile($event)"
-              [parentForm]="choosePictureForm"
-            >
-            </app-file-uploader>
-          </div>
-          <div class="check-btn">
-          <mat-checkbox class="check" color="primary"></mat-checkbox>
-          <button
-            *ngIf="newDivs.length > 2"
-            type="button"
-            mat-mini-fab
-            color="primary"
-            class="btn-remove"
-            (click)="removeNewDiv(idx)"
-          >
-            -
-          </button>
-          </div>
-        </div>
+
+        <ng-container formArrayName="options" class="ng-cont">
+          <ng-container *ngFor="let option of options().controls; let idx = index">
+            <div class="input-check" [formGroupName]="idx">
+              <div class="d-flex align-items-center">
+                <div class="mt-5 ms-3">
+
+                  <app-file-uploader
+                    [parentForm]="choosePictureForm"
+                  >
+                  </app-file-uploader>
+
+                </div>
+                <div class="check-btn">
+                  <!--                  <mat-checkbox-->
+                  <!--                    color="primary"-->
+                  <!--                    formControlName="isCorrectOption"-->
+                  <!--                    matTooltip="Check the box if the answer is correct"-->
+                  <!--                  >-->
+                  <!--                  </mat-checkbox>-->
+                  <button
+                    mat-mini-fab
+                    [disabled]="options().length <= 2"
+                    color="accent"
+                    class="btn-remove"
+                    (click)="deleteOption(idx)"
+                  >
+                    -
+                  </button>
+                </div>
+              </div>
+            </div>
+
+          </ng-container>
+        </ng-container>
+
+        <button
+          class="add-btn"
+          mat-mini-fab
+          (click)="addOption()"
+          color="primary"
+          [disabled]="options().length == 5"
+        >
+          <mat-icon class="add-course-btn">add</mat-icon>
+        </button>
+        <!--              <div class="input-check" *ngFor="let div of newDivs; index as idx">-->
+        <!--                <div class="d-flex align-items-center">-->
+        <!--                  <div class="mt-5 ms-3">-->
+        <!--                    <app-file-uploader-->
+        <!--                      [parentForm]="choosePictureForm"-->
+        <!--                    >-->
+        <!--                    </app-file-uploader>-->
+        <!--                  </div>-->
+        <!--                  <div class="check-btn">-->
+        <!--                  <mat-checkbox class="check" color="primary"></mat-checkbox>-->
+        <!--                  <button-->
+        <!--                    type="button"-->
+        <!--                    mat-mini-fab-->
+        <!--                    color="primary"-->
+        <!--                    class="btn-remove"-->
+        <!--                    (click)="deleteOption(idx)"-->
+        <!--                  >-->
+        <!--                    - -->
+        <!--                  </button>-->
+        <!--                  </div>-->
+        <!--                </div>-->
+        <!--              </div>-->
       </div>
-      </div>
-      <button
-        type="button"
-        mat-mini-fab
-        color="primary"
-        class="btn"
-        (click)="addNewDiv()"
-        [disabled]="newDivs.length >= 5"
-      >
-        <mat-icon>plus_one</mat-icon>
-      </button>
 
     </div>
 
@@ -51,3 +84,11 @@
 </form>
 
 
+<button
+  class="add-btn"
+  mat-mini-fab
+  (click)="submit()"
+
+>
+  Sumbot
+</button>

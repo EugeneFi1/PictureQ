@@ -7,7 +7,6 @@
 
         <div class="mt-5 ms-3">
           <app-file-uploader
-            (correctFile)="getFile($event)"
             [parentForm]="matchMatchesForm"
           >
           </app-file-uploader>
@@ -17,47 +16,62 @@
 
       <div class="answer">
         <h1>Answers</h1>
-        <div class="input-check" *ngFor="let div of newDivs; index as idx">
+        <div class="input-check">
+          <ng-container formArrayName="options" class="ng-cont">
+            <ng-container *ngFor="let optionForm of options().controls; let idx = index">
+              <div class="input-check" [formGroupName]="idx">
 
-          <div class="d-flex align-items-center">
-            <p class="index">{{idx + 1 }}</p>
-            <mat-form-field class="example-full-width mx-3" appearance="fill">
-              <mat-label>Enter answer option</mat-label>
-              <input matInput formControlName="answer">
-            </mat-form-field>
+                <mat-form-field class="example-full-width mx-3" appearance="fill">
+                  <mat-label>Enter option</mat-label>
+                  <input matInput formControlName="option">
+                  <mat-error *ngIf="optionForm.get('option')?.hasError('required')">
+                    {{requiredErrorMessage}}
+                  </mat-error>
+                </mat-form-field>
 
-            <mat-form-field class="example-full-width" appearance="fill">
-              <mat-label>Enter answer option</mat-label>
-              <input matInput formControlName="answer">
-            </mat-form-field>
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter answer</mat-label>
+                  <input matInput formControlName="answer">
+                  <mat-error *ngIf="optionForm.get('answer')?.hasError('required')">
+                    {{requiredErrorMessage}}
+                  </mat-error>
+                </mat-form-field>
 
+                <button
+                  mat-mini-fab
+                  [disabled]="options().length <= 2"
+                  color="accent"
+                  class="btn-remove"
+                  (click)="deleteOption(idx)"
+                >
+                  -
+                </button>
+              </div>
 
-            <button
-              *ngIf="newDivs.length >= 2"
-              type="button"
-              mat-mini-fab
-              color="primary"
-              class="btn-remove"
-              (click)="removeNewDiv(idx)"
-            >
-              -
-            </button>
-          </div>
+            </ng-container>
+          </ng-container>
+
+          <button
+            class="add-btn"
+            mat-mini-fab
+            (click)="addOption()"
+            color="primary"
+            [disabled]="options().length === 5"
+          >
+            <mat-icon class="add-course-btn">add</mat-icon>
+          </button>
         </div>
-
-        <button
-          type="button"
-          mat-mini-fab
-          color="primary"
-          class="btn"
-          (click)="addNewDiv()"
-          [disabled]="newDivs.length >= 5"
-        >
-          <mat-icon>plus_one</mat-icon>
-        </button>
 
       </div>
     </div>
   </form>
 </div>
 
+<button
+  class="add-btn"
+  mat-raised-button
+  (click)="submit()"
+  color="primary"
+>
+  Sumbit
+</button>

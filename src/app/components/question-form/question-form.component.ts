@@ -9,10 +9,11 @@ import {ValidationMessage} from "../../models/labels/validation.message";
 })
 export class QuestionFormComponent {
 
-  @Input() public parentForm!: FormGroup;
+  @Input() parentForm!: FormGroup;
+
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
-  minLengthErrorMessage = ValidationMessage.min;
+  minLengthErrorMessage = ValidationMessage.minLength;
 
   constructor() { }
 

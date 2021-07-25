@@ -1,8 +1,6 @@
-import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
-import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
-import {addDivisions} from "../answer-option/answer-option.component";
 
 @Component({
   selector: 'app-match-matches',
@@ -11,52 +9,52 @@ import {addDivisions} from "../answer-option/answer-option.component";
 })
 export class MatchMatchesComponent implements OnInit {
 
-  newDivs: addDivisions[] = [1];
   matchMatchesForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
-  minLengthErrorMessage = ValidationMessage.min;
-  selectedFile?: File;
-  imgUrl?: string | ArrayBuffer | null;
-  isHeavier?: boolean;
-  checked: boolean = false;
+  minLengthErrorMessage = ValidationMessage.minLength;
 
-  constructor(private formBuilder: FormBuilder
-  ) { }
-
-  ngOnInit(): void {
-    this.matchMatchesForm = this.createForm()
-
-  }
-
-  public createForm(): FormGroup{
-    return this.formBuilder.group({
-      question: new FormControl(null,[
-        Validators.required,
-        // Validators.minLength(10)
-      ]),
-      description: new FormControl(null),
-      explanation: new FormControl(null),
-      answer: new FormControl(null, [Validators.required]),
+  constructor(private formBuilder: FormBuilder) {
+    this.matchMatchesForm = this.formBuilder.group({
+      commonForm: this.formBuilder.group({
+        question: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(10)
+        ]),
+        description: new FormControl(),
+        explanation: new FormControl()
+      }),
       fileForm: this.formBuilder.group({
-        file: new FormControl(null,[Validators.required])
-      })
+        file: new FormControl()
+      }),
+      options: this.formBuilder.array([this.createOption(), this.createOption()])
     })
   }
 
-  public getFile(validFile: ValidFile) {
-    this.selectedFile = validFile.selectedFile;
-    this.imgUrl = validFile.imgUrl;
-    this.isHeavier = validFile.isHeavier;
+
+  ngOnInit(): void {
   }
 
-  addNewDiv() {
-    this.newDivs.push(new addDivisions())
-
+  options() {
+    return this.matchMatchesForm.controls["options"] as FormArray;
   }
 
-  removeNewDiv(idx: number) {
-    this.newDivs.splice(idx, 1)
+  public createOption(): FormGroup {
+    return this.formBuilder.group({
+      option: ['', Validators.required],
+      answer: ['', Validators.required],
+    });
   }
 
+  public addOption() {
+    this.options().push(this.createOption());
+  }
+
+  deleteOption(optIdx: number) {
+    this.options().removeAt(optIdx);
+  }
+
+  submit() {
+    console.log(this.matchMatchesForm.value)
+  }
 }

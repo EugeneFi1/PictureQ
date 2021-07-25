@@ -22,6 +22,7 @@ export class FindObjectDialogComponent {
     if (this.points.length < 5) {
       this.points.push({a: e.offsetX, b: e.offsetY});
     }
+
   }
 
 }

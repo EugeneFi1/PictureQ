@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
@@ -15,53 +15,43 @@ export class FindObjectOnPictureComponent implements OnInit {
   findObjectForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
-  minLengthErrorMessage = ValidationMessage.min;
+  minLengthErrorMessage = ValidationMessage.minLength;
   selectedFile: File | undefined;
   imgUrl: string | ArrayBuffer | null | undefined;
-  isHeavier?: boolean;
   checked: boolean = false;
 
   constructor(private formBuilder: FormBuilder,
               public dialog: MatDialog
-  ) { }
+  ) {
+  }
 
   ngOnInit(): void {
-    this.findObjectForm = this.createForm()
-
+    this.findObjectForm = this.createForm();
   }
 
-  public createForm(): FormGroup{
+  public createForm(): FormGroup {
     return this.formBuilder.group({
-      question: new FormControl(null,[
-        Validators.required,
-        // Validators.minLength(10)
-      ]),
-      description: new FormControl(null),
-      explanation: new FormControl(null),
-      answer: new FormControl(null, [Validators.required]),
+      commonForm: this.formBuilder.group({
+        question: new FormControl('', [Validators.required, Validators.minLength(10)]),
+        description: new FormControl(),
+        explanation: new FormControl()
+      }),
       fileForm: this.formBuilder.group({
-        file: new FormControl(null,[Validators.required])
+        file: new FormControl()
       })
-    })
+    });
   }
 
-  public getFile(validFile: ValidFile) {
-    this.selectedFile = validFile.selectedFile;
-    this.imgUrl = validFile.imgUrl;
-    this.isHeavier = validFile.isHeavier;
-  }
-
-
-  openImg() {
-    let dialogRef = this.dialog.open(FindObjectDialogComponent,{
-        width: '100%',
-        height: '95%',
-        data: this.imgUrl
-      });
+  public openImg() {
+    let dialogRef = this.dialog.open(FindObjectDialogComponent, {
+      width: '100%',
+      height: '95%',
+      data: this.imgUrl
+    });
     dialogRef.afterClosed().subscribe(result => {
-      if(result){
+      if (result) {
         this.savePoints();
-      } else if(!result){
+      } else if (!result) {
         this.dialog.closeAll();
       }
 
@@ -69,6 +59,6 @@ export class FindObjectOnPictureComponent implements OnInit {
   }
 
   public savePoints() {
-    console.log('I work')
+//todo: write logic for saving points
   }
 }

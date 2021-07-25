@@ -19,7 +19,7 @@ export class ValidFile {
 export class FileUploaderComponent {
 
   @ViewChild('inp') input!: ElementRef;
-  @Input() public parentForm!: FormGroup;
+  @Input() parentForm!: FormGroup;
   @Output() correctFile = new EventEmitter<ValidFile>();
 
   updatedFile: ValidFile = new ValidFile();

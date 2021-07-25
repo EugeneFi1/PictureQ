@@ -1,6 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import {addDivisions} from "../answer-option/answer-option.component";
-import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
+import {Component, OnInit} from '@angular/core';
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
 
@@ -11,52 +10,54 @@ import {ValidFile} from "../../../../components/file-uploader/file-uploader.comp
 })
 export class ChoosePictureComponent implements OnInit {
 
-  newDivs: addDivisions[] = [addDivisions, addDivisions];
   choosePictureForm!: FormGroup;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
-  minLengthErrorMessage = ValidationMessage.min;
-  private selectedFile: File | undefined;
-  private imgUrl: string | ArrayBuffer | null | undefined;
-  private isHeavier?: boolean;
-  checked: boolean = false;
+  minLengthErrorMessage = ValidationMessage.minLength;
+
 
   constructor(private formBuilder: FormBuilder
-  ) { }
-
-  ngOnInit(): void {
-    this.choosePictureForm = this.createForm()
-
-  }
-
-  public createForm(): FormGroup{
-    return this.formBuilder.group({
-      question: new FormControl(null,[
-        Validators.required,
-        // Validators.minLength(10)
-      ]),
-      description: new FormControl(null),
-      explanation: new FormControl(null),
-      answer: new FormControl(null, [Validators.required]),
-      fileForm: this.formBuilder.group({
-        file: new FormControl(null,[Validators.required])
-      })
+  ) {
+    this.choosePictureForm = this.formBuilder.group({
+      commonForm: this.formBuilder.group({
+        question: new FormControl('', [
+          Validators.required,
+          Validators.minLength(10)
+        ]),
+        description: new FormControl(),
+        explanation: new FormControl()
+      }),
+      options: this.formBuilder.array([this.createOption(), this.createOption()]),
     })
   }
 
-  public getFile(validFile: ValidFile) {
-    this.selectedFile = validFile.selectedFile;
-    this.imgUrl = validFile.imgUrl;
-    this.isHeavier = validFile.isHeavier;
+  ngOnInit(): void {
   }
 
-  addNewDiv() {
-    this.newDivs.push(new addDivisions())
 
+  options() {
+    return this.choosePictureForm.controls["options"] as FormArray;
   }
 
-  removeNewDiv(idx: number) {
-    this.newDivs.splice(idx, 1)
+  createOption(): FormGroup {
+    return this.formBuilder.group({
+      // isCorrectOption: false,
+      fileForm: this.formBuilder.group({
+        file: new FormControl(null, [Validators.required])
+      }),
+    });
+  }
+
+  addOption() {
+    this.options().push(this.createOption());
+  }
+
+  deleteOption(optIdx: number) {
+    this.options().removeAt(optIdx);
+  }
+
+  submit() {
+    console.log(this.choosePictureForm.value)
   }
 
 }
