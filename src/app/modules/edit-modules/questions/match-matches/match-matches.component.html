@@ -23,7 +23,7 @@
 
                 <mat-form-field class="example-full-width mx-3" appearance="fill">
                   <mat-label>Enter option</mat-label>
-                  <input matInput formControlName="option">
+                  <input matInput formControlName="option" autocomplete="off">
                   <mat-error *ngIf="optionForm.get('option')?.hasError('required')">
                     {{requiredErrorMessage}}
                   </mat-error>
@@ -31,7 +31,7 @@
 
                 <mat-form-field class="example-full-width" appearance="fill">
                   <mat-label>Enter answer</mat-label>
-                  <input matInput formControlName="answer">
+                  <input matInput formControlName="answer" autocomplete="off">
                   <mat-error *ngIf="optionForm.get('answer')?.hasError('required')">
                     {{requiredErrorMessage}}
                   </mat-error>
@@ -66,12 +66,3 @@
     </div>
   </form>
 </div>
-
-<button
-  class="add-btn"
-  mat-raised-button
-  (click)="submit()"
-  color="primary"
->
-  Sumbit
-</button>

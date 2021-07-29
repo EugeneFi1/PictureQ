@@ -1,6 +1,6 @@
 import {Injectable} from "@angular/core";
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {RegExp} from "../../../../models/reg-exp/reg-exp";
+import {questNameRegExp} from "../../../../util/reg-exp";
 
 @Injectable({
   providedIn:'root'
@@ -16,7 +16,7 @@ export class CreateQuestFormService {
     return this.formBuilder.group({
       name: new FormControl(null,[
         Validators.required,
-        Validators.pattern(RegExp.nameRegExp)
+        Validators.pattern(questNameRegExp)
       ]),
       description: new FormControl(null),
       explanation: new FormControl(null),
@@ -32,7 +32,7 @@ export class CreateQuestFormService {
   return this.formBuilder.group({
   title: new FormControl(null,[
     Validators.required,
-    Validators.pattern(RegExp.nameRegExp)
+    Validators.pattern(questNameRegExp)
   ]),
   description: new FormControl(null),
   explanation: new FormControl(null)

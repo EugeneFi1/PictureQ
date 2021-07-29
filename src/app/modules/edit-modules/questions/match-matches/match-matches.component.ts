@@ -54,7 +54,4 @@ export class MatchMatchesComponent implements OnInit {
     this.options().removeAt(optIdx);
   }
 
-  submit() {
-    console.log(this.matchMatchesForm.value)
-  }
 }

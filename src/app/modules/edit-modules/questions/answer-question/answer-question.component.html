@@ -23,7 +23,7 @@
           <div class="d-flex align-items-center">
             <mat-form-field class="example-full-width w-300" appearance="fill">
               <mat-label>Enter answer option</mat-label>
-              <input matInput formControlName="answer">
+              <input matInput formControlName="answer" autocomplete="off">
               <mat-error
                 *ngIf="answerQuestionForm?.get('answer')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
             </mat-form-field>

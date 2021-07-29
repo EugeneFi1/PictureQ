@@ -12,6 +12,7 @@
       <div class="d-flex align-items-center mt-5 ms-3">
         <app-file-uploader
           [parentForm]="findObjectForm"
+          (correctFile)="getFile($event)"
         >
         </app-file-uploader>
       </div>

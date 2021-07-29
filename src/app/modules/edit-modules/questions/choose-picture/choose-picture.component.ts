@@ -27,7 +27,7 @@ export class ChoosePictureComponent implements OnInit {
         description: new FormControl(),
         explanation: new FormControl()
       }),
-      options: this.formBuilder.array([this.createOption(), this.createOption()]),
+      options: this.formBuilder.array([this.createOption()]),
     })
   }
 

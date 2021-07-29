@@ -22,12 +22,7 @@
 
                 </div>
                 <div class="check-btn">
-                  <!--                  <mat-checkbox-->
-                  <!--                    color="primary"-->
-                  <!--                    formControlName="isCorrectOption"-->
-                  <!--                    matTooltip="Check the box if the answer is correct"-->
-                  <!--                  >-->
-                  <!--                  </mat-checkbox>-->
+
                   <button
                     mat-mini-fab
                     [disabled]="options().length <= 2"
@@ -53,42 +48,13 @@
         >
           <mat-icon class="add-course-btn">add</mat-icon>
         </button>
-        <!--              <div class="input-check" *ngFor="let div of newDivs; index as idx">-->
-        <!--                <div class="d-flex align-items-center">-->
-        <!--                  <div class="mt-5 ms-3">-->
-        <!--                    <app-file-uploader-->
-        <!--                      [parentForm]="choosePictureForm"-->
-        <!--                    >-->
-        <!--                    </app-file-uploader>-->
-        <!--                  </div>-->
-        <!--                  <div class="check-btn">-->
-        <!--                  <mat-checkbox class="check" color="primary"></mat-checkbox>-->
-        <!--                  <button-->
-        <!--                    type="button"-->
-        <!--                    mat-mini-fab-->
+        <!--                  <mat-checkbox-->
         <!--                    color="primary"-->
-        <!--                    class="btn-remove"-->
-        <!--                    (click)="deleteOption(idx)"-->
+        <!--                    formControlName="isCorrectOption"-->
+        <!--                    matTooltip="Check the box if the answer is correct"-->
         <!--                  >-->
-        <!--                    - -->
-        <!--                  </button>-->
-        <!--                  </div>-->
-        <!--                </div>-->
-        <!--              </div>-->
+        <!--                  </mat-checkbox>-->
       </div>
-
     </div>
-
   </div>
-
 </form>
-
-
-<button
-  class="add-btn"
-  mat-mini-fab
-  (click)="submit()"
-
->
-  Sumbot
-</button>

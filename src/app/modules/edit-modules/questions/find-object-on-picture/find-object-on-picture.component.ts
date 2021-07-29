@@ -61,4 +61,9 @@ export class FindObjectOnPictureComponent implements OnInit {
   public savePoints() {
 //todo: write logic for saving points
   }
+
+
+  getFile(validFile: ValidFile) {
+    this.imgUrl = validFile.imgUrl;
+  }
 }
