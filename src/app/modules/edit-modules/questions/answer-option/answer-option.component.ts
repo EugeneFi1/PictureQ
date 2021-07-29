@@ -4,7 +4,7 @@ import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
 
 @Component({
-  selector: 'app-answer-option-v2',
+  selector: 'app-answer-option',
   templateUrl: './answer-option.component.html',
   styleUrls: ['./answer-option.component.less']
 })

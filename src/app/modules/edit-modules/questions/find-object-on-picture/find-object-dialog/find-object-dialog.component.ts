@@ -9,7 +9,7 @@ import {MAT_DIALOG_DATA} from "@angular/material/dialog";
 })
 export class FindObjectDialogComponent {
 
-  points: any = [{a:100, b:200}];
+  points: any = [];
   set = new Set
 
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
@@ -21,8 +21,8 @@ export class FindObjectDialogComponent {
 
   getPoint(e: MouseEvent) {
     const coords = {
-      a: e.offsetX,
-      b: e.offsetY
+      x: e.offsetX,
+      y: e.offsetY
     }
     if (this.points.length < 5) {
       this.points.push(coords);

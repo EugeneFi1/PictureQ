@@ -44,13 +44,39 @@
             (onSelectionChange)="chooseQuestionType($event)"
           >{{question.viewValue}}</mat-option>
         </mat-select>
-        <mat-error *ngIf="secondStepForm.get('categoryId')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
       </mat-form-field>
     </div>
 
+    <ng-container [ngSwitch]="questionType">
+      <ng-container *ngSwitchCase="'answer-option'">
+        <app-answer-option>
+        </app-answer-option>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'match-matches'">
+        <app-match-matches>
+        </app-match-matches>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'choose-right-picture'">
+        <app-choose-picture>
+        </app-choose-picture>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'find-object-on-the-picture'">
+        <app-find-object-on-picture>
+        </app-find-object-on-picture>
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'answer-question'">
+        <app-answer-question>
+        </app-answer-question>
+      </ng-container>
+
+    </ng-container>
+
 
     <div class="bottom-button">
-      <div>
         <button
           mat-raised-button
           color="primary"
@@ -59,7 +85,6 @@
         >
           Back
         </button>
-      </div>
       <div>
         <button mat-raised-button color="primary"
                 type="button"
