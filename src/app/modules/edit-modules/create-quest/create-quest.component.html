@@ -1,129 +1,31 @@
-<<<<<<< HEAD
 <mat-horizontal-stepper linear #stepper
                         labelPosition="bottom"
                         *ngIf="firstStepForm"
 >
 
-  <mat-step [stepControl]="firstStepForm" >
-    <ng-template matStepLabel>Create page</ng-template>
-    <app-create-quest-step-one
-      [firstStepForm]="firstStepForm"
-=======
-<div class="m-3">
+  <mat-step [stepControl]="firstStepForm">
+    <ng-template matStepLabel>Create quest</ng-template>
+      <app-create-quest-step-one
+        [firstStepForm]="firstStepForm"
+      >
+      </app-create-quest-step-one>
+    </mat-step>
 
-  <h1 class="text-center mt-4 text-uppercase">Create quest</h1>
+    <mat-step [stepControl]="secondStepForm">
+      <ng-template matStepLabel>Create page</ng-template>
 
-  <form [formGroup]="form" class="example-form">
-    <mat-grid-list cols="2" rowHeight="20em">
-
-      <mat-grid-tile style="width: 200px">
-        <div>
-          <mat-form-field class="example-full-width">
-            <mat-label>Name</mat-label>
-              <input matInput placeholder="ex. name" formControlName="name">
-            <mat-error *ngIf="form?.get('name')?.hasError('required')">
-              {{requiredErrorMessage}}
-            </mat-error>
-            <mat-error *ngIf="form?.get('name')?.hasError('pattern')">
-              {{questNameErrorMessage}}
-            </mat-error>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Description</mat-label>
-            <textarea matInput placeholder="ex. description" formControlName="description"></textarea>
-          </mat-form-field>
-
-          <mat-form-field class="example-full-width">
-            <mat-label>Explanation</mat-label>
-            <textarea matInput placeholder="ex. explanation" formControlName="explanation"></textarea>
-          </mat-form-field>
-
-        </div>
-      </mat-grid-tile>
-
-      <mat-grid-tile style="width: 200px">
-
-        <app-file-uploader
-          (correctFile)="getFile($event)"
-          [parentForm]="form"
-        >
-        </app-file-uploader>
+      <app-create-quest-step-two
+        [secondStepForm]="secondStepForm"
+      >
+      </app-create-quest-step-two>
+    </mat-step>
 
 
-      </mat-grid-tile>
+    <mat-step>
+      <ng-template matStepLabel>Confirm quest</ng-template>
+      <app-create-quest-step-three>
+      </app-create-quest-step-three>
+    </mat-step>
 
-      <mat-grid-tile style="width: 200px">
-        <div>
-          <label id="select-option-label">How to display answers?</label>
-          <mat-radio-group
-            aria-labelledby="select-option-label"
-            formControlName="replyStrategy"
-            class="example-radio-group"
-            color="primary"
-            [(ngModel)]="selectOption"
-            required
-          >
-            <mat-radio-button
-              class="example-radio-button"
-              *ngFor="let option of options"
-              [value]="option"
-            >
-              {{option}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </mat-grid-tile>
-      <mat-grid-tile style="width: 200px">
-        <div>
-          <label id="option-label">In what order to display pages?</label>
-          <mat-radio-group
-            aria-labelledby="option-label"
-            formControlName="showStrategy"
-            class="example-radio-group"
-            color="primary"
-            [(ngModel)]="orderDisplayOption"
-            required
-          >
-            <mat-radio-button
-              *ngFor="let opt of orderOption"
-              [value]="opt"
-              class="example-radio-button"
-            >
-              {{opt}}
-            </mat-radio-button>
-          </mat-radio-group>
-        </div>
-      </mat-grid-tile>
-
-    </mat-grid-list>
-    <button mat-raised-button color="primary"
-            type="submit"
-            class="next-button"
-            [disabled]="isHeavier || form.invalid"
-            (click)="submit()"
->>>>>>> main
-    >
-    </app-create-quest-step-one>
-  </mat-step>
-
-  <mat-step [stepControl]="secondStepForm">
-    <ng-template matStepLabel >Create page</ng-template>
-    <app-create-quest-step-two
-      [secondStepForm]="secondStepForm"
-    >
-    </app-create-quest-step-two>
-  </mat-step>
-
-  <mat-step>
-    <ng-template matStepLabel>Confirm quest</ng-template>
-    <app-create-quest-step-three>
-    </app-create-quest-step-three>
-  </mat-step>
-
-<<<<<<< HEAD
 
 </mat-horizontal-stepper>
-
-=======
->>>>>>> main
