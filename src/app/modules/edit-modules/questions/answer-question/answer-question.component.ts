@@ -41,4 +41,7 @@ export class AnswerQuestionComponent implements OnInit {
   }
 
 
+  submit() {
+    console.log(this.answerQuestionForm.value);
+  }
 }

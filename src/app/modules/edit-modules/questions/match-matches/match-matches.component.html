@@ -63,6 +63,18 @@
         </div>
 
       </div>
+
+    </div>
+    <div class="mat-dialog-btn">
+      <button mat-raised-button color="primary" mat-dialog-close="false">Cancel</button>
+      <button
+        mat-raised-button
+        color="primary"
+        mat-dialog-close="true"
+        [disabled]="matchMatchesForm.invalid"
+        (click)="submit()"
+      >Submit
+      </button>
     </div>
   </form>
 </div>

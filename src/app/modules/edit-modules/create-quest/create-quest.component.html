@@ -3,8 +3,8 @@
                         *ngIf="firstStepForm"
 >
 
-  <mat-step [stepControl]="firstStepForm">
-    <ng-template matStepLabel>Create quest</ng-template>
+  <mat-step [stepControl]="firstStepForm" >
+    <ng-template matStepLabel>Create page</ng-template>
     <app-create-quest-step-one
       [firstStepForm]="firstStepForm"
     >
@@ -12,13 +12,12 @@
   </mat-step>
 
   <mat-step [stepControl]="secondStepForm">
-    <ng-template matStepLabel>Create page</ng-template>
+    <ng-template matStepLabel >Create page</ng-template>
     <app-create-quest-step-two
       [secondStepForm]="secondStepForm"
     >
     </app-create-quest-step-two>
   </mat-step>
-
 
   <mat-step>
     <ng-template matStepLabel>Confirm quest</ng-template>
@@ -26,4 +25,6 @@
     </app-create-quest-step-three>
   </mat-step>
 
+
 </mat-horizontal-stepper>
+

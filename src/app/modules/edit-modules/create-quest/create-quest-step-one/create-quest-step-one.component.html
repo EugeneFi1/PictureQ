@@ -11,7 +11,7 @@
             <input matInput
                    placeholder="ex. name"
                    formControlName="name"
-                   required autocomplete="off"
+                   autocomplete="off"
             >
             <mat-error *ngIf="firstStepForm?.get('name')?.hasError('required')">
               {{requiredErrorMessage}}
@@ -41,7 +41,7 @@
             class="example-radio-group"
             color="primary"
             [(ngModel)]="selectOption"
-            required
+
           >
             <mat-radio-button
               class="example-radio-button"
@@ -76,11 +76,12 @@
 
       <button mat-raised-button color="primary"
               type="submit"
-              [disabled]="isHeavier || firstStepForm.invalid"
+
               matStepperNext
       >
         Next
       </button>
+      <!--              [disabled]="isHeavier || firstStepForm.invalid"-->
     </div>
   </form>
 

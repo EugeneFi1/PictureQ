@@ -27,7 +27,7 @@ export class AnswerOptionComponent implements OnInit {
       fileForm: this.formBuilder.group({
         file: new FormControl()
       }),
-      options: this.formBuilder.array([this.createOption()]),
+      options: this.formBuilder.array([this.createOption(), this.createOption()]),
     })
   }
 

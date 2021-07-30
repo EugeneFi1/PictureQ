@@ -66,4 +66,8 @@ export class FindObjectOnPictureComponent implements OnInit {
   getFile(validFile: ValidFile) {
     this.imgUrl = validFile.imgUrl;
   }
+
+  submit() {
+    console.log(this.findObjectForm.value);
+  }
 }

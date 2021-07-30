@@ -42,6 +42,7 @@
             *ngFor="let question of questions"
             [value]="question.value"
             (onSelectionChange)="chooseQuestionType($event)"
+            (click)="openDialog()"
           >{{question.viewValue}}</mat-option>
         </mat-select>
       </mat-form-field>
@@ -49,28 +50,18 @@
 
     <ng-container [ngSwitch]="questionType">
       <ng-container *ngSwitchCase="'answer-option'">
-        <app-answer-option>
-        </app-answer-option>
       </ng-container>
 
       <ng-container *ngSwitchCase="'match-matches'">
-        <app-match-matches>
-        </app-match-matches>
       </ng-container>
 
       <ng-container *ngSwitchCase="'choose-right-picture'">
-        <app-choose-picture>
-        </app-choose-picture>
       </ng-container>
 
       <ng-container *ngSwitchCase="'find-object-on-the-picture'">
-        <app-find-object-on-picture>
-        </app-find-object-on-picture>
       </ng-container>
 
       <ng-container *ngSwitchCase="'answer-question'">
-        <app-answer-question>
-        </app-answer-question>
       </ng-container>
 
     </ng-container>
@@ -88,14 +79,14 @@
       <div>
         <button mat-raised-button color="primary"
                 type="button"
-                [disabled]="secondStepForm.invalid"
+                [disabled]="secondStepForm.invalid || allQuestions.length === 0"
                 (click)="addPage()"
         >
           Add another page
         </button>
         <button mat-raised-button color="primary"
                 type="button"
-                [disabled]="secondStepForm.invalid"
+                [disabled]="secondStepForm.invalid || allQuestions.length === 0"
         >
           Finished quest
         </button>

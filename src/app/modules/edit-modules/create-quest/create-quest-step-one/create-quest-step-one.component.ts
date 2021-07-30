@@ -6,6 +6,7 @@ import {CreateQuestState} from "../../../../store/reducer/create-quest.reducer";
 import {Location} from "@angular/common";
 import {Title} from "@angular/platform-browser";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
+import {options} from "../../../../util/quest-option";
 
 @Component({
   selector: 'app-create-quest-step-one',
@@ -17,23 +18,13 @@ export class CreateQuestStepOneComponent implements OnInit {
   @Input() firstStepForm!: FormGroup;
   selectedFile?: File;
   imgUrl?: string | ArrayBuffer | null;
-  options: string[] = [
-    'don`t show',
-    'show answer at the end',
-    'show answer after user response',
-    'show answer immediately'
-  ]
-  orderOption: string[] = [
-    'show sequentially',
-    'show in reverse order',
-    'show everything in random order'
-  ]
+  options = options;
   requiredErrorMessage = ValidationMessage.required;
   questNameErrorMessage = ValidationMessage.questName;
-  isHeavier: boolean | undefined = false;
+  isHeavier?: boolean= false;
   isLoading: boolean = false;
-  selectOption?: string;
-  orderDisplayOption?: string;
+  selectOption = this.options[1];
+
 
   constructor(private store: Store<CreateQuestState>,
               private location: Location,
@@ -43,6 +34,7 @@ export class CreateQuestStepOneComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.options[1])
   }
 
   public back(): void {
