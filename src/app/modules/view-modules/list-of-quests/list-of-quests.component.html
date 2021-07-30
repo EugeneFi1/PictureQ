@@ -1,30 +1,28 @@
-<div class="list" *ngIf="!isLoading">
-
+<div class="list" *ngIf="!isLoading; else loader">
   <app-search-header (sendValue)="getValue($event)">
   </app-search-header>
-
   <div class="mt-5">
-
-    <app-quests [quests]="quests" [value]="filterValue" [page]="pageOfItems">
-    </app-quests>
-
-
-    <div *ngIf="!isLoading && !quests || quests?.length == 0">
-      <h2 class="text-center">Ooops.. It seems we can't find any quests!</h2>
+    <div *ngIf="quests; else emptyContent">
+      <app-quests [quests]="quests" [value]="filterValue" [page]="pageOfItems">
+      </app-quests>
+      <jw-pagination
+        *ngIf="quests?.length > 0"
+        [items]="quests"
+        [pageSize]="8"
+        (changePage)="onChangePage($event)"
+      >
+      </jw-pagination>
     </div>
-
-
-    <jw-pagination
-      [items]="quests"
-      [pageSize]="8"
-      *ngIf="!isLoading && quests.length > 0"
-      (changePage)="onChangePage($event)"
-    >
-    </jw-pagination>
-
   </div>
 </div>
 
-<app-cover-loading *ngIf="isLoading">
+<ng-template #loader>
+  <app-cover-loading>
+  </app-cover-loading>
+</ng-template>
 
-</app-cover-loading>
+<ng-template #emptyContent>
+  <div>
+    <h2 class="text-center">Ooops.. It seems we can't find any quests!</h2>
+  </div>
+</ng-template>
