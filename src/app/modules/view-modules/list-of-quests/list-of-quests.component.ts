@@ -27,9 +27,10 @@ export class ListOfQuestsComponent implements OnInit, OnDestroy {
       .pipe(finalize( () => {
         this.isLoading = false;
       })).subscribe(
-        data => {
-          this.quests = data;
-        });
+      data => {
+        this.quests = data;
+      });
+
   }
 
   ngOnDestroy(): void {
