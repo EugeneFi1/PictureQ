@@ -1,39 +1,38 @@
 <form [formGroup]="parentForm">
   <div class="cont">
-  <div formGroupName="fileForm" class="all-content">
+    <div formGroupName="fileForm" class="all-content">
 
-    <div class="preview" *ngIf="updatedFile.imgUrl">
-      <div class="preview-image">
-        <div class="preview-remove"
-             (click)="resetImg()"
-             *ngIf="!updatedFile.isHeavier || updatedFile.isRightExpansion"
-        >
-          X
-        </div>
+      <div class="preview" *ngIf="updatedFile.imgUrl">
+        <div class="preview-image">
+          <div class="preview-remove"
+               (click)="resetImg()"
+               *ngIf="!updatedFile.isHeavier || updatedFile.isRightExpansion"
+          >
+            X
+          </div>
 
-        <img mat-card-image
-             alt="Photo"
-             *ngIf="updatedFile.imgUrl"
-             [src]="updatedFile.imgUrl"
-        >
+          <img mat-card-image
+               alt="Photo"
+               *ngIf="updatedFile.imgUrl"
+               [src]="updatedFile.imgUrl"
+          >
 
-        <div class="preview-info" *ngIf="!updatedFile.isHeavier">
-          <span>{{updatedFile.name}}</span>
-          <span>{{updatedFile.weight}}</span>
+          <div class="preview-info" *ngIf="!updatedFile.isHeavier">
+            <span>{{updatedFile.name}}</span>
+            <span>{{updatedFile.weight}}</span>
+          </div>
         </div>
       </div>
+
+      <input type="file"
+             (change)="onFileSelected($event)"
+             id="uploadCaptureInputFile"
+             formControlName="file"
+             #inp
+      >
     </div>
 
-    <input type="file"
-           (change)="onFileSelected($event)"
-           id="uploadCaptureInputFile"
-           formControlName="file"
-           #inp
-    >
-
-  </div>
-
-  <button class="btn" (click)="inp.click()" type="button">Choose picture</button>
+    <button class="btn" (click)="inp.click()" type="button">Choose picture</button>
   </div>
   <div class="errors">
     <mat-error *ngIf="updatedFile.isHeavier">{{fileWeightErrorMessage}}</mat-error>

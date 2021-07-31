@@ -8,10 +8,9 @@
     <div class="answer">
       <h1>Answers</h1>
       <div class="cont">
-
         <ng-container formArrayName="options" class="ng-cont">
           <ng-container *ngFor="let option of options().controls; let idx = index">
-            <div class="input-check" [formGroupName]="idx">
+            <div class="input-check" >
               <div class="d-flex align-items-center">
                 <div class="mt-5 ms-3">
 
@@ -35,7 +34,6 @@
                 </div>
               </div>
             </div>
-
           </ng-container>
         </ng-container>
 

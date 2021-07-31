@@ -34,19 +34,19 @@ export class ChoosePictureComponent implements OnInit {
   ngOnInit(): void {
   }
 
-
   options() {
     return this.choosePictureForm.controls["options"] as FormArray;
   }
 
   createOption(): FormGroup {
     return this.formBuilder.group({
-      // isCorrectOption: false,
       fileForm: this.formBuilder.group({
         file: new FormControl(null, [Validators.required])
       }),
     });
   }
+
+  // isCorrectOption: false,
 
   addOption() {
     this.options().push(this.createOption());
