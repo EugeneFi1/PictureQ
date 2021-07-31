@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
-import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
-import {ValidationMessage} from "../../../../models/labels/validation.message";
-import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
+import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from '@angular/forms';
+import {ValidationMessage} from '../../../../models/labels/validation.message';
+import {ValidFile} from '../../../../components/file-uploader/file-uploader.component';
 
 @Component({
   selector: 'app-choose-picture',
@@ -28,14 +28,14 @@ export class ChoosePictureComponent implements OnInit {
         explanation: new FormControl()
       }),
       options: this.formBuilder.array([this.createOption()]),
-    })
+    });
   }
 
   ngOnInit(): void {
   }
 
-  options() {
-    return this.choosePictureForm.controls["options"] as FormArray;
+  options(): FormArray {
+    return this.choosePictureForm.controls.options as FormArray;
   }
 
   createOption(): FormGroup {
@@ -48,16 +48,16 @@ export class ChoosePictureComponent implements OnInit {
 
   // isCorrectOption: false,
 
-  addOption() {
+  addOption(): void {
     this.options().push(this.createOption());
   }
 
-  deleteOption(optIdx: number) {
+  deleteOption(optIdx: number): void {
     this.options().removeAt(optIdx);
   }
 
-  submit() {
-    console.log(this.choosePictureForm.value)
+  submit(): void {
+    console.log(this.choosePictureForm.value);
   }
 
 }
