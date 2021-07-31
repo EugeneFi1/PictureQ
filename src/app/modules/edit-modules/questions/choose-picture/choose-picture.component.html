@@ -1,3 +1,4 @@
+<mat-dialog-content>
 <form [formGroup]="choosePictureForm">
   <div class="all-cont">
     <div class="question">
@@ -55,3 +56,15 @@
     </div>
   </div>
 </form>
+  <div class="mat-dialog-btn">
+    <button mat-raised-button color="primary" mat-dialog-close="false">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      mat-dialog-close="true"
+      [disabled]="choosePictureForm.invalid"
+      (click)="submit()"
+    >Submit
+    </button>
+  </div>
+</mat-dialog-content>
