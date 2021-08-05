@@ -34,8 +34,8 @@ export class ChoosePictureComponent implements OnInit {
   ngOnInit(): void {
   }
 
-  options(): FormArray {
-    return this.choosePictureForm.controls.options as FormArray;
+  options(): any {
+    return this.choosePictureForm.controls.options as FormGroup;
   }
 
   createOption(): FormGroup {
