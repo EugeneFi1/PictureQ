@@ -27,7 +27,7 @@ export class ChoosePictureComponent implements OnInit {
         description: new FormControl(),
         explanation: new FormControl()
       }),
-      options: this.formBuilder.array([this.createOption()]),
+      options: this.formBuilder.array([this.createOption(), this.createOption()]),
     });
   }
 
@@ -40,13 +40,14 @@ export class ChoosePictureComponent implements OnInit {
 
   createOption(): FormGroup {
     return this.formBuilder.group({
+      isCorrectOption: new FormControl(false),
       fileForm: this.formBuilder.group({
         file: new FormControl(null, [Validators.required])
       }),
     });
   }
 
-  // isCorrectOption: false,
+
 
   addOption(): void {
     this.options().push(this.createOption());

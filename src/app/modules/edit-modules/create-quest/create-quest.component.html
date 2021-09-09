@@ -5,27 +5,37 @@
 
   <mat-step [stepControl]="firstStepForm">
     <ng-template matStepLabel>Create quest</ng-template>
-      <app-create-quest-step-one
-        [firstStepForm]="firstStepForm"
-      >
-      </app-create-quest-step-one>
-    </mat-step>
-
-    <mat-step [stepControl]="secondStepForm">
-      <ng-template matStepLabel>Create page</ng-template>
-
-      <app-create-quest-step-two
-        [secondStepForm]="secondStepForm"
-      >
-      </app-create-quest-step-two>
-    </mat-step>
+    <app-create-quest-step-one
+      [firstStepForm]="firstStepForm"
+    >
+    </app-create-quest-step-one>
+  </mat-step>
 
 
-    <mat-step>
-      <ng-template matStepLabel>Confirm quest</ng-template>
-      <app-create-quest-step-three>
-      </app-create-quest-step-three>
-    </mat-step>
+  <form [formGroup]="stepperForm">
+
+    <ng-container formArrayName="steps">
+      <ng-container *ngFor="let step of steps().controls; let stepIdx = index">
+
+        <mat-step [stepControl]="secondStepForm">
+          <ng-template matStepLabel>Create page</ng-template>
+          <app-create-quest-step-two
+            [secondStepForm]="secondStepForm"
+            (addPageBtn)="addStep()"
+          >
+          </app-create-quest-step-two>
+        </mat-step>
+
+      </ng-container>
+    </ng-container>
+  </form>
+
+
+  <mat-step>
+    <ng-template matStepLabel>Confirm quest</ng-template>
+    <app-create-quest-step-three>
+    </app-create-quest-step-three>
+  </mat-step>
 
 
 </mat-horizontal-stepper>

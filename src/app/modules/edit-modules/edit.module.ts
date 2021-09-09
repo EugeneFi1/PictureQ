@@ -12,6 +12,7 @@ import { FindObjectOnPictureComponent } from './questions/find-object-on-picture
 import { AnswerQuestionComponent } from './questions/answer-question/answer-question.component';
 import { FindObjectDialogComponent } from './questions/find-object-on-picture/find-object-dialog/find-object-dialog.component';
 import {AnswerOptionComponent} from "./questions/answer-option/answer-option.component";
+import {AnswerInputService} from "./create-quest/service/answer-input.service";
 
 
 @NgModule({
@@ -32,5 +33,6 @@ import {AnswerOptionComponent} from "./questions/answer-option/answer-option.com
     SharedModule,
     EditRoutingModule,
   ],
+  providers:[AnswerInputService]
 })
 export class EditModule { }

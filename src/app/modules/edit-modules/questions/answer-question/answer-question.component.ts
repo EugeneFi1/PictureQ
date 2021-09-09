@@ -2,6 +2,7 @@ import {Component, ElementRef, OnInit, ViewChild} from '@angular/core';
 import {FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
 import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
+import {AnswerInputQuestion} from "../../../../models/api/answer-input-question";
 
 @Component({
   selector: 'app-answer-question',
@@ -42,6 +43,17 @@ export class AnswerQuestionComponent implements OnInit {
 
 
   submit() {
-    console.log(this.answerQuestionForm.value);
+
+    const answerInputQuestion: AnswerInputQuestion = {
+      id: 1,
+      question: this.answerQuestionForm.value.commonForm.question,
+      description: this.answerQuestionForm.value.commonForm.description,
+      explanation: this.answerQuestionForm.value.commonForm.explanation,
+      rightAnswer: this.answerQuestionForm.value.answer
+    }
+    console.log(answerInputQuestion)
+    // this.answerInputService.createAnswerInputQuestion(answerInputQuestion)
+    // console.log(this.answerQuestionForm.value);
   }
+
 }

@@ -10,18 +10,26 @@
       <h1>Answers</h1>
       <div class="cont">
         <ng-container formArrayName="options" class="ng-cont">
-<!--          <ng-container *ngFor="let option of options().controls; let idx = index" formArrayName="options">-->
           <ng-container *ngFor="let option of options().controls; let idx = index">
             <div class="input-check" >
               <div class="d-flex align-items-center">
                 <div class="mt-5 ms-3">
-<!--                  TO DO: cast to form group-->
                   <app-file-uploader
                     [parentForm]="option"
                   >
                   </app-file-uploader>
+
+
                 </div>
                 <div class="check-btn">
+
+                  <mat-checkbox
+                    color="primary"
+                    formControlName="isCorrectOption"
+                    matTooltip="Check the box if the answer is correct"
+                    class="mat-box"
+                  >
+                  </mat-checkbox>
 
                   <button
                     mat-mini-fab
@@ -32,11 +40,16 @@
                   >
                     -
                   </button>
-                </div>
-              </div>
+
+
+
+
+            </div>
+            </div>
             </div>
           </ng-container>
         </ng-container>
+
         <button
           class="add-btn"
           mat-mini-fab
@@ -46,12 +59,7 @@
         >
           <mat-icon class="add-course-btn">add</mat-icon>
         </button>
-        <!--                  <mat-checkbox-->
-        <!--                    color="primary"-->
-        <!--                    formControlName="isCorrectOption"-->
-        <!--                    matTooltip="Check the box if the answer is correct"-->
-        <!--                  >-->
-        <!--                  </mat-checkbox>-->
+
       </div>
     </div>
   </div>

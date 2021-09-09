@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {FormArray, FormBuilder, FormControl, FormGroup, Validators} from "@angular/forms";
 import {ValidationMessage} from "../../../../models/labels/validation.message";
-import {ValidFile} from "../../../../components/file-uploader/file-uploader.component";
 
 @Component({
   selector: 'app-answer-option',
@@ -17,18 +16,23 @@ export class AnswerOptionComponent implements OnInit {
   checked: boolean = false;
 
   constructor(private formBuilder: FormBuilder) {
-
     this.answerOptionForm = this.formBuilder.group({
       commonForm: this.formBuilder.group({
-        question: new FormControl(null, [Validators.required, Validators.minLength(10)]),
+        question: new FormControl(null, [
+          Validators.required,
+          Validators.minLength(10)
+        ]),
         description: new FormControl(),
         explanation: new FormControl()
       }),
       fileForm: this.formBuilder.group({
         file: new FormControl()
       }),
-      options: this.formBuilder.array([this.createOption(), this.createOption()]),
-    })
+      options: this.formBuilder.array([
+        this.createOption(),
+        this.createOption()
+      ]),
+    });
   }
 
   ngOnInit(): void {
@@ -54,7 +58,7 @@ export class AnswerOptionComponent implements OnInit {
   }
 
   submit() {
-    console.log(this.answerOptionForm.value);
+
   }
 
 

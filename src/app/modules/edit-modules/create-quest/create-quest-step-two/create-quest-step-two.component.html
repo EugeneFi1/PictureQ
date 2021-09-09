@@ -79,14 +79,14 @@
       <div>
         <button mat-raised-button color="primary"
                 type="button"
-                [disabled]="secondStepForm.invalid || allQuestions.length === 0"
+                [disabled]="secondStepForm.invalid"
                 (click)="addPage()"
         >
           Add another page
         </button>
         <button mat-raised-button color="primary"
                 type="button"
-                [disabled]="secondStepForm.invalid || allQuestions.length === 0"
+                [disabled]="secondStepForm.invalid"
         >
           Finished quest
         </button>
