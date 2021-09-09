@@ -1,0 +1,28 @@
+<form [formGroup]="parentForm">
+  <div formGroupName="commonForm">
+  <h1 class="text-center">Question</h1>
+  <mat-form-field class="example-full-width w-300 mb-3">
+    <mat-label>Question</mat-label>
+    <input matInput autocomplete="off" formControlName="question" required>
+
+    <mat-error *ngIf="parentForm.get('commonForm')?.get('question')?.hasError('required')">
+      {{requiredErrorMessage}}
+    </mat-error>
+      <mat-error *ngIf="parentForm.get('commonForm')?.get('question')?.errors?.minlength">
+        At least {{parentForm.get('commonForm')?.get('question')?.errors?.minlength.requiredLength}} characters <br>
+        Current number of characters {{parentForm?.get('commonForm')?.get('question')?.errors?.minlength.actualLength}}
+      </mat-error>
+
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width  w-300">
+    <mat-label>Description</mat-label>
+    <textarea matInput formControlName="description"></textarea>
+  </mat-form-field>
+
+  <mat-form-field class="example-full-width  w-300">
+    <mat-label>Explanation</mat-label>
+    <textarea matInput formControlName="explanation"></textarea>
+  </mat-form-field>
+  </div>
+</form>

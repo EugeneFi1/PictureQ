@@ -30,6 +30,7 @@ export class ListOfQuestsComponent implements OnInit, OnDestroy {
       data => {
         this.quests = data;
       });
+
   }
 
   ngOnDestroy(): void {

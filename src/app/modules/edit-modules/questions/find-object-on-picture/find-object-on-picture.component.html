@@ -1,0 +1,46 @@
+<form [formGroup]="findObjectForm">
+  <div class="all-cont">
+
+    <div class="question">
+      <app-question-form [parentForm]="findObjectForm">
+      </app-question-form>
+    </div>
+
+    <div class="answer">
+      <h1>Answers</h1>
+
+      <div class="d-flex align-items-center mt-5 ms-3">
+        <app-file-uploader
+          [parentForm]="findObjectForm"
+          (correctFile)="getFile($event)"
+        >
+        </app-file-uploader>
+      </div>
+
+      <button
+        mat-raised-button
+        color="primary"
+        class="mt-3"
+        (click)="openImg()"
+        [disabled]="!imgUrl"
+
+      >
+        Choose object on the picture
+      </button>
+
+    </div>
+  </div>
+  <div class="mat-dialog-btn">
+    <button mat-raised-button color="primary" mat-dialog-close="false">Cancel</button>
+    <button
+      mat-raised-button
+      color="primary"
+      mat-dialog-close="true"
+      [disabled]="findObjectForm.invalid"
+      (click)="submit()"
+    >Submit
+    </button>
+  </div>
+</form>
+
+

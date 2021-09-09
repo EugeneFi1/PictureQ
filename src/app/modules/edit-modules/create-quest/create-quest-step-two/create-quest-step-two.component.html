@@ -1,0 +1,103 @@
+<div>
+
+  <form [formGroup]="secondStepForm" class="example-form">
+    <div class="all-cont">
+      <div class="input-container">
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Title</mat-label>
+          <input matInput placeholder="ex. name" formControlName="title" required>
+          <mat-error *ngIf="secondStepForm?.get('title')?.hasError('required')">{{requiredErrorMessage}}</mat-error>
+          <mat-error *ngIf="secondStepForm?.get('title')?.hasError('pattern')">{{questNameErrorMessage}}</mat-error>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Description</mat-label>
+          <textarea matInput formControlName="explanation"></textarea>
+        </mat-form-field>
+
+        <mat-form-field class="example-full-width">
+          <mat-label>Explanation</mat-label>
+          <textarea matInput formControlName="description"></textarea>
+        </mat-form-field>
+
+      </div>
+      <div>
+        <button
+          mat-raised-button color="primary"
+          class="mr-auto ml-auto mt-3"
+          type="button"
+        >
+          Settings style for this page
+        </button>
+      </div>
+    </div>
+
+
+    <div class="d-flex justify-content-center mt-5">
+      <mat-form-field appearance="fill" class="mb-3 choose-ans">
+        <mat-label>Choose type of question</mat-label>
+        <mat-select required>
+          <mat-option
+            *ngFor="let question of questions"
+            [value]="question.value"
+            (onSelectionChange)="chooseQuestionType($event)"
+            (click)="openDialog()"
+          >{{question.viewValue}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+
+    <ng-container [ngSwitch]="questionType">
+      <ng-container *ngSwitchCase="'answer-option'">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'match-matches'">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'choose-right-picture'">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'find-object-on-the-picture'">
+      </ng-container>
+
+      <ng-container *ngSwitchCase="'answer-question'">
+      </ng-container>
+
+    </ng-container>
+
+
+    <div class="bottom-button">
+        <button
+          mat-raised-button
+          color="primary"
+          matStepperPrevious
+          type="button"
+        >
+          Back
+        </button>
+      <div>
+        <button mat-raised-button color="primary"
+                type="button"
+                [disabled]="secondStepForm.invalid"
+                (click)="addPage()"
+        >
+          Add another page
+        </button>
+        <button mat-raised-button color="primary"
+                type="button"
+                [disabled]="secondStepForm.invalid"
+        >
+          Finished quest
+        </button>
+      </div>
+    </div>
+
+  </form>
+
+</div>
+
+
+<!--<app-cover-loading>-->
+
+<!--</app-cover-loading>-->

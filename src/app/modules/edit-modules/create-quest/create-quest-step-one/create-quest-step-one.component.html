@@ -1,0 +1,114 @@
+<div *ngIf="!isLoading">
+
+  <form [formGroup]="firstStepForm" class="example-form">
+    <div class="all-cont">
+      <div class="flex-container">
+
+        <div class="d-flex flex-column mt-3">
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Name</mat-label>
+            <input matInput
+                   placeholder="ex. name"
+                   formControlName="name"
+                   autocomplete="off"
+            >
+            <mat-error *ngIf="firstStepForm?.get('name')?.hasError('required')">
+              {{requiredErrorMessage}}
+            </mat-error>
+            <mat-error *ngIf="firstStepForm?.get('name')?.hasError('pattern')">
+              {{questNameErrorMessage}}
+            </mat-error>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Description</mat-label>
+            <textarea matInput formControlName="description"></textarea>
+          </mat-form-field>
+
+          <mat-form-field class="example-full-width">
+            <mat-label>Explanation</mat-label>
+            <textarea matInput formControlName="explanation"></textarea>
+          </mat-form-field>
+
+        </div>
+
+        <div class="mt-100">
+          <label id="select-option-label">How to display answers?*</label>
+          <mat-radio-group
+            aria-labelledby="select-option-label"
+            formControlName="replyStrategy"
+            class="example-radio-group"
+            color="primary"
+            [(ngModel)]="selectOption"
+
+          >
+            <mat-radio-button
+              class="example-radio-button"
+              *ngFor="let option of options"
+              [value]="option"
+            >
+              {{option}}
+            </mat-radio-button>
+          </mat-radio-group>
+
+        </div>
+
+
+      </div>
+      <div class="d-flex align-items-center ms-5">
+        <app-file-uploader
+          (correctFile)="getFile($event)"
+          [parentForm]="firstStepForm"
+        >
+        </app-file-uploader>
+      </div>
+    </div>
+    <div class="bottom-button">
+      <button
+        mat-raised-button
+        color="primary"
+        (click)="back()"
+        type="button"
+      >
+        Back
+      </button>
+
+      <button mat-raised-button color="primary"
+              type="submit"
+
+              matStepperNext
+      >
+        Next
+      </button>
+      <!--              [disabled]="isHeavier || firstStepForm.invalid"-->
+    </div>
+  </form>
+
+</div>
+
+<app-cover-loading *ngIf="isLoading">
+</app-cover-loading>
+
+
+<!--      <mat-grid-tile style="width: 200px">-->
+<!--        <div>-->
+<!--          <label id="option-label" >In what order to display pages?</label>-->
+<!--          <mat-radio-group-->
+<!--            aria-labelledby="option-label"-->
+<!--            formControlName="showStrategy"-->
+<!--            class="example-radio-group"-->
+<!--            color="primary"-->
+<!--            [(ngModel)]="orderDisplayOption"-->
+<!--            required-->
+<!--          >-->
+<!--            <mat-radio-button-->
+<!--              *ngFor="let opt of orderOption"-->
+<!--              [value]="opt"-->
+<!--              class="example-radio-button"-->
+<!--            >-->
+<!--              {{opt}}-->
+<!--            </mat-radio-button>-->
+<!--          </mat-radio-group>-->
+<!--        </div>-->
+<!--      </mat-grid-tile>-->

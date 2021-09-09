@@ -1,0 +1,80 @@
+<div>
+  <form [formGroup]="matchMatchesForm" class="example-form">
+    <div class="all-cont">
+      <div class="question">
+        <app-question-form [parentForm]="matchMatchesForm">
+        </app-question-form>
+
+        <div class="mt-5 ms-3">
+          <app-file-uploader
+            [parentForm]="matchMatchesForm"
+          >
+          </app-file-uploader>
+        </div>
+
+      </div>
+
+      <div class="answer">
+        <h1>Answers</h1>
+        <div class="input-check">
+          <ng-container formArrayName="options" class="ng-cont">
+            <ng-container *ngFor="let optionForm of options().controls; let idx = index">
+              <div class="input-check" [formGroupName]="idx">
+
+                <mat-form-field class="example-full-width mx-3" appearance="fill">
+                  <mat-label>Enter option</mat-label>
+                  <input matInput formControlName="option" autocomplete="off">
+                  <mat-error *ngIf="optionForm.get('option')?.hasError('required')">
+                    {{requiredErrorMessage}}
+                  </mat-error>
+                </mat-form-field>
+
+                <mat-form-field class="example-full-width" appearance="fill">
+                  <mat-label>Enter answer</mat-label>
+                  <input matInput formControlName="answer" autocomplete="off">
+                  <mat-error *ngIf="optionForm.get('answer')?.hasError('required')">
+                    {{requiredErrorMessage}}
+                  </mat-error>
+                </mat-form-field>
+
+                <button
+                  mat-mini-fab
+                  [disabled]="options().length <= 2"
+                  color="accent"
+                  class="btn-remove"
+                  (click)="deleteOption(idx)"
+                >
+                  -
+                </button>
+              </div>
+
+            </ng-container>
+          </ng-container>
+
+          <button
+            class="add-btn"
+            mat-mini-fab
+            (click)="addOption()"
+            color="primary"
+            [disabled]="options().length === 5"
+          >
+            <mat-icon class="add-course-btn">add</mat-icon>
+          </button>
+        </div>
+
+      </div>
+
+    </div>
+    <div class="mat-dialog-btn">
+      <button mat-raised-button color="primary" mat-dialog-close="false">Cancel</button>
+      <button
+        mat-raised-button
+        color="primary"
+        mat-dialog-close="true"
+        [disabled]="matchMatchesForm.invalid"
+        (click)="submit()"
+      >Submit
+      </button>
+    </div>
+  </form>
+</div>

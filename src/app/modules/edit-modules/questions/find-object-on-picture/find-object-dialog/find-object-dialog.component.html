@@ -1,0 +1,41 @@
+<h2 mat-dialog-title class="text-center">You can add up to 5 points in the picture </h2>
+
+<mat-dialog-content>
+<!--  <div class="cont">-->
+  <div>
+    <img mat-card-image
+         alt="Photo"
+         src="{{data}}"
+         (click)="getPoint($event)"
+    >
+  </div>
+
+  <div class="list-of-point">
+    <p>Selected points:</p>
+    <ol class="rounded">
+
+      <li *ngFor="let p of points; index as idx">
+         <div class="list-text">
+        <span>x:{{p.x}} y:{{p.y}}</span>
+         </div>
+        <div class="list-remove">
+          <button
+            mat-mini-fab
+            color="accent"
+            class="btn-remove"
+            (click)="removePoint(idx)"
+          >
+            -
+          </button>
+        </div>
+      </li>
+
+    </ol>
+  </div>
+
+<!--  </div>-->
+</mat-dialog-content>
+<mat-dialog-actions>
+  <button color="primary" mat-raised-button mat-dialog-close>Cancel</button>
+  <button color="primary" mat-raised-button mat-dialog-close="true">Save</button>
+</mat-dialog-actions>
